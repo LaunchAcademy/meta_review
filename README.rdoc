@@ -27,4 +27,4 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
-(ER Diagram)(https://www.dropbox.com/s/crpa4x3fy9rx4ku/Screen%20Shot%202014-09-22%20at%201.39.40%20PM.png?dl=0)
+[ER Diagram](https://www.dropbox.com/s/crpa4x3fy9rx4ku/Screen%20Shot%202014-09-22%20at%201.39.40%20PM.png?dl=0)
