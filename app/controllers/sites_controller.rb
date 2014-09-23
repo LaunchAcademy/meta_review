@@ -1,10 +1,13 @@
 class SitesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit,
+    :destroy]
 
   def index
+    @sites = Site.all
   end
 
   def show
+    @site = Site.find(params[:id])
   end
 
   def new

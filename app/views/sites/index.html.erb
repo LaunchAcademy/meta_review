@@ -1,5 +1,9 @@
 <h1>Review Sites</h1>
 
+<% @sites.each do |site| %>
+  <li><%= link_to site.title, site_path(site) %></li>
+<% end %>
+<br>
 
 
 
