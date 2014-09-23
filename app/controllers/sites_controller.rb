@@ -32,7 +32,7 @@ class SitesController < ApplicationController
     @site = current_user.sites.find(params[:id])
 
     if @site.update(site_params)
-      redirect_to @site
+      redirect_to @site, notice: 'Site updated successfully!'
     else
       render 'edit'
     end
