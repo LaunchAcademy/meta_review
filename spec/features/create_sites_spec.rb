@@ -22,6 +22,13 @@ def site_create
       user_id: 1)
 end
 
+def submit_site
+  fill_in 'Description', with: 'check out this great dumb site'
+  click_on 'Create Site'
+
+  expect(page).to have_content "has already been taken"
+end
+
 
 feature "Create site" do
   scenario "user creates site succesfully" do
@@ -38,24 +45,16 @@ feature "Create site" do
   scenario "user submits a duplicate site title" do
     site_create
     sign_up
-
     fill_in 'Title', with: 'Dumb site'
     fill_in 'Url', with: 'http://www.google.com'
-    fill_in 'Description', with: 'check out this great dumb site'
-    click_on 'Create Site'
-
-    expect(page).to have_content "has already been taken"
+    submit_site
   end
 
   scenario "user submits a duplicate site url" do
     site_create
     sign_up
-
     fill_in 'Title', with: 'Cool site'
     fill_in 'Url', with: 'http://www.dumbsite.com'
-    fill_in 'Description', with: 'check out this great dumb site'
-    click_on 'Create Site'
-
-    expect(page).to have_content "has already been taken"
+    submit_site
   end
 end
