@@ -1,6 +1,10 @@
 class SitesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
+  end
+
+  def show
   end
 
   def new
@@ -14,9 +18,16 @@ class SitesController < ApplicationController
       render "new"
     else
       @site.save
-      redirect_to "/sites"
+      redirect_to @site
     end
   end
+
+  # def upload
+  #   uploaded_io = params[:site][:screenshot]
+  #   File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+  #     file.write(uploaded_io.read)
+  #   end
+  # end
 
   private
 
