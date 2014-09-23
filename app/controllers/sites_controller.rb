@@ -38,6 +38,14 @@ class SitesController < ApplicationController
       end
   end
 
+  def destroy
+    @site = Site.find(params[:id])
+
+    @site.destroy
+
+    redirect_to sites_path
+  end
+
   # def upload
   #   uploaded_io = params[:site][:screenshot]
   #   File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
