@@ -22,11 +22,9 @@ def site_create
       user_id: 1)
 end
 
-def submit_site
+def submit_description
   fill_in 'Description', with: 'check out this great dumb site'
   click_on 'Create Site'
-
-  expect(page).to have_content "has already been taken"
 end
 
 
@@ -39,7 +37,7 @@ feature "Create site" do
     fill_in 'Description', with: 'check out this great search engine'
     click_on 'Create Site'
 
-    expect(page).to have_content "hello"
+    expect(page).to have_content "GREAT SITE"
   end
 
   scenario "user submits a duplicate site title" do
@@ -47,7 +45,8 @@ feature "Create site" do
     sign_up
     fill_in 'Title', with: 'Dumb site'
     fill_in 'Url', with: 'http://www.google.com'
-    submit_site
+    submit_description
+    expect(page).to have_content "has already been taken"
   end
 
   scenario "user submits a duplicate site url" do
@@ -55,6 +54,39 @@ feature "Create site" do
     sign_up
     fill_in 'Title', with: 'Cool site'
     fill_in 'Url', with: 'http://www.dumbsite.com'
-    submit_site
+    submit_description
+    expect(page).to have_content "has already been taken"
   end
+
+  scenario "user submits a blank form" do
+    sign_up
+
+    click_on 'Create Site'
+
+    expect(page).to have_content "can't be blank"
+  end
+
+  scenario "user submits a blank title" do
+    sign_up
+    fill_in 'Url', with: 'http://www.google.com'
+    submit_description
+    expect(page).to have_content "can't be blank"
+  end
+
+  scenario "user submits a blank url" do
+    sign_up
+    fill_in 'Title', with: 'GREAT SITE'
+    submit_description
+    expect(page).to have_content "can't be blank"
+  end
+
+  scenario "user submits a blank description" do
+    sign_up
+    fill_in 'Title', with: 'GREAT SITE'
+    fill_in 'Url', with: 'http://www.google.com'
+    click_on 'Create Site'
+
+    expect(page).to have_content "can't be blank"
+  end
+
 end

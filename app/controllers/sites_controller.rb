@@ -46,13 +46,6 @@ class SitesController < ApplicationController
     redirect_to sites_path
   end
 
-  # def upload
-  #   uploaded_io = params[:site][:screenshot]
-  #   File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-  #     file.write(uploaded_io.read)
-  #   end
-  # end
-
   private
 
   def site_params
