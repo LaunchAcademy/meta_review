@@ -14,12 +14,13 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(site_params)
     @site.user = current_user
-    if @site.errors.any?
-      render "new"
-    else
-      @site.save
+
+    if @site.save
       redirect_to @site
+    else
+      render "new"
     end
+
   end
 
   # def upload
