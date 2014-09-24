@@ -8,9 +8,9 @@ feature "Create site" do
 
     visit new_site_path
 
-    fill_in 'Title', with: 'GREAT SITE'
-    fill_in 'Url', with: 'http://www.google.com'
-    fill_in 'Description', with: 'check out this great search engine'
+    fill_in "Title", with: "GREAT SITE"
+    fill_in "Url", with: "http://www.google.com"
+    fill_in "Description", with: "check out this great search engine"
     click_on 'Create Site'
 
     expect(page).to have_content "GREAT SITE"
@@ -21,16 +21,16 @@ feature "Create site" do
 
     sign_in_as(user)
 
-    FactoryGirl.create(:site)
+    site = FactoryGirl.create(:site)
 
     visit new_site_path
 
-    fill_in 'Title', with: 'Google!'
-    fill_in 'Url', with: 'http://www.gooogle.com'
-    fill_in 'Description', with: 'It is a site'
-    click_on 'Create Site'
+    fill_in "Title", with: site.title
+    fill_in "Url", with: "http://www.gooogle.com"
+    fill_in "Description", with: "It is a site"
+    click_on "Create Site"
 
-    expect(page).to have_content 'has already been taken'
+    expect(page).to have_content "has already been taken"
   end
 
   scenario "user submits a duplicate site url" do
@@ -38,14 +38,14 @@ feature "Create site" do
 
     sign_in_as(user)
 
-    FactoryGirl.create(:site)
+    site = FactoryGirl.create(:site)
 
     visit new_site_path
 
-    fill_in 'Title', with: 'Cool site'
-    fill_in 'Url', with: 'http://google.com'
-    fill_in 'Description', with: 'It is a site'
-    click_on 'Create Site'
+    fill_in "Title", with: "Cool site"
+    fill_in "Url", with: site.url
+    fill_in "Description", with: "It is a site"
+    click_on "Create Site"
 
     expect(page).to have_content "has already been taken"
   end
@@ -57,7 +57,7 @@ feature "Create site" do
 
     visit new_site_path
 
-    click_on 'Create Site'
+    click_on "Create Site"
 
     expect(page).to have_content "can't be blank"
   end
@@ -69,9 +69,9 @@ feature "Create site" do
 
     visit new_site_path
 
-    fill_in 'Url', with: 'http://www.google.com'
-    fill_in 'Description', with: 'It is a site'
-    click_on 'Create Site'
+    fill_in "Url", with: "http://www.google.com"
+    fill_in "Description", with: "It is a site"
+    click_on "Create Site"
 
     expect(page).to have_content "can't be blank"
   end
@@ -83,9 +83,9 @@ feature "Create site" do
 
     visit new_site_path
 
-    fill_in 'Title', with: 'GREAT SITE'
-    fill_in 'Description', with: 'It is a site'
-    click_on 'Create Site'
+    fill_in "Title", with: "GREAT SITE"
+    fill_in "Description", with: "It is a site"
+    click_on "Create Site"
 
     expect(page).to have_content "can't be blank"
   end
@@ -97,9 +97,9 @@ feature "Create site" do
 
     visit new_site_path
 
-    fill_in 'Title', with: 'GREAT SITE'
-    fill_in 'Url', with: 'It is a site'
-    click_on 'Create Site'
+    fill_in "Title", with: "GREAT SITE"
+    fill_in "Url", with: "It is a site"
+    click_on "Create Site"
 
     expect(page).to have_content "can't be blank"
   end
