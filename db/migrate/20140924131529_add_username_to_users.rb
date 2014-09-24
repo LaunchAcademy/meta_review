@@ -1,5 +1,7 @@
 class AddUsernameToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :username, :string, uniqueness: true, null: false
+    add_column :users, :username, :string, null: false
+
+    add_index :users, :username, unique: true
   end
 end
