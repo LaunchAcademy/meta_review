@@ -9,10 +9,10 @@ class ReviewsController < ApplicationController
     @site = Site.find(params[:site_id])
     @review = @site.reviews.build(review_params)
     @review.user = current_user
-      if @review.save
+    if @review.save
       redirect_to @site
-     else
-      render 'reviews/new'
+    else
+      render "reviews/new"
     end
   end
 
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     if @review.update(review_params)
       redirect_to @site
     else
-      render 'reviews/edit'
+      render "reviews/edit"
     end
   end
 
@@ -39,6 +39,7 @@ class ReviewsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:rating, :body)
   end
