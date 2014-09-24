@@ -21,11 +21,11 @@ feature "Create site" do
 
     sign_in_as(user)
 
-    FactoryGirl.create(:site)
+    site = FactoryGirl.create(:site)
 
     visit new_site_path
 
-    fill_in "Title", with: "Google!"
+    fill_in "Title", with: site.title
     fill_in "Url", with: "http://www.gooogle.com"
     fill_in "Description", with: "It is a site"
     click_on "Create Site"
@@ -38,12 +38,12 @@ feature "Create site" do
 
     sign_in_as(user)
 
-    FactoryGirl.create(:site)
+    site = FactoryGirl.create(:site)
 
     visit new_site_path
 
     fill_in "Title", with: "Cool site"
-    fill_in "Url", with: "http://google.com"
+    fill_in "Url", with: site.url
     fill_in "Description", with: "It is a site"
     click_on "Create Site"
 

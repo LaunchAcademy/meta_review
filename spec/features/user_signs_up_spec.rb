@@ -8,7 +8,7 @@ feature "User signs up" do
     fill_in "Email", with: "frank@thetank.com"
     fill_in "Password", with: "password123"
     fill_in "Password confirmation", with: "password123"
-    click_on 'Sign up'
+    click_on "Sign up"
 
     expect(page).to have_content "Welcome! You have signed up successfully."
   end

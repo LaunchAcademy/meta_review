@@ -1,5 +1,4 @@
 class Site < ActiveRecord::Base
-  has_many :reviews, dependent: :destroy
   belongs_to :user
 
   validates :title, uniqueness: true
