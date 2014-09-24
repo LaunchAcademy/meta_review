@@ -8,6 +8,7 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
+    @reviews = @site.reviews.all
   end
 
   def new
