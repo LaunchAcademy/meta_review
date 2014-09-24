@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 feature "Delete site" do
   scenario "user creates site succesfully" do
@@ -8,7 +8,7 @@ feature "Delete site" do
 
     visit site_path(site)
 
-    click_on 'Delete'
+    click_on "Delete"
 
     expect(page).to have_content "Site destroyed successfully"
   end
