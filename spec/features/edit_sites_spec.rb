@@ -12,7 +12,7 @@ feature "Edit site" do
 
     fill_in "Title", with: "GREATEST SITE"
     fill_in "Url", with: "http://www.google.com/whoa"
-    fill_in "Description", with: "check out this great search engine, it is awesome"
+    fill_in "Description", with: "check out this great search engine!"
     click_on "Update Site"
 
     expect(page).to have_content "Site updated successfully!"
