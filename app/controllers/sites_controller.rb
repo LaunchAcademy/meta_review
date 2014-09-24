@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :edit,
-    :destroy]
+  before_action :authenticate_user!,
+    only: [:new, :create, :update, :edit, :destroy]
 
   def index
     @sites = Site.all
@@ -16,41 +16,41 @@ class SitesController < ApplicationController
   end
 
   def create
-    @site = Site.new(site_params)
-    @site.user = current_user
+    @site = current_user.sites.build(site_params)
 
     if @site.save
-      redirect_to @site
+      redirect_to @site, notice: 'Site created successfully!'
     else
       render "new"
     end
   end
 
   def edit
-    @site = Site.find(params[:id])
+    @site = current_user.sites.find(params[:id])
   end
 
   def update
-    @site = Site.find(params[:id])
-      if @site.update(site_params)
-        redirect_to @site
-      else
-        render 'edit'
-      end
+    @site = current_user.sites.find(params[:id])
+
+    if @site.update(site_params)
+      redirect_to @site, notice: 'Site updated successfully!'
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    @site = Site.find(params[:id])
+    @site = current_user.sites.find(params[:id])
 
     @site.destroy
 
-    redirect_to sites_path
+    redirect_to sites_path, notice: 'Site destroyed successfully!'
   end
 
   private
 
   def site_params
-    params.require(:site).permit(:title, :url, :description, :screenshot, :user_id)
+    params.require(:site).permit(:title, :url, :description, :screenshot)
   end
 
 end
