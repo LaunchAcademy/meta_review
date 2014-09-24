@@ -12,8 +12,10 @@ gem 'devise'
 
 group :development, :test do
   gem 'capybara'
+  gem 'poltergeist'
   gem 'launchy'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'cloudinary', '~> 1.0.77'
 end
 
