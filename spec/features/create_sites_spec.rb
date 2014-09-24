@@ -44,7 +44,7 @@ feature "Create site" do
 
     fill_in "Title", with: "Cool site"
     fill_in "Url", with: "http://google.com"
-    fill_in "Description", with: 'It is a site'
+    fill_in "Description", with: "It is a site"
     click_on "Create Site"
 
     expect(page).to have_content "has already been taken"
