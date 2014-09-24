@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates :username, precsence: true
+  validates :username, presence: true, uniqueness: true
 
   has_many :sites
 
