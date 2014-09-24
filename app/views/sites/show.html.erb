@@ -6,4 +6,13 @@
 <%= link_to "Edit", edit_site_path %>
 <%= link_to "Delete", @site, method: :delete, data: { confirm: "Are you sure?" } %>
 <br />
+<ul>
+<% @site.reviews.each do |review| %>
+<li>
+Rating: <%= review.rating %> <br>
+Description: <%= review.body %>
+</li>
+</ul>
+<% end %>
 <%= link_to "Back", sites_path %>
+<%= link_to "Make a Review", new_site_review_path(@site) %>

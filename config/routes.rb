@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'welcome#index'
 
-  resources :sites
+  resources :sites do
+    resources :reviews
+  end
 end
