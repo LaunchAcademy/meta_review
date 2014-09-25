@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   resources :sites do
-    resources :reviews
+    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end
 end
