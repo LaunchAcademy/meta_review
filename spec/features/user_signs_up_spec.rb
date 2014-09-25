@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'capybara/rails'
+require "rails_helper"
+require "capybara/rails"
 
 feature "User signs up" do
   scenario "user signs up successfully" do
