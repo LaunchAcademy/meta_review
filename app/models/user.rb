@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :sites
+  validates :username, presence: true, uniqueness: true
+
+  has_many :sites, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   def is_admin?
     if self.admin == true
