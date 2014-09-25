@@ -1,12 +1,25 @@
 <h1><%= @site.title %></h1>
 
-<h3><%= link_to @site.url, @site.url %></h3>
+<h3><%= link_to @site.url, "#{@site.url}" %></h3>
 <p><%= @site.description %></p>
 
 <% if current_user == @site.user %>
   <%= link_to "Edit", edit_site_path %>
-  <%= link_to "Delete", @site, method: :delete, data: { confirm: "Are you sure?" } %>
-<br />
+  <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
+<br>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      User: <%= review.user.email %><br>
+      Rating: <%= review.rating %> <br>
+      Description: <%= review.body %><br>
+      <%= link_to "Edit Review", edit_site_review_path(@site, review)%>
+      <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
+        { confirm: "Are your sure?" } %>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to "Back", sites_path %>
+<%= link_to "Make a Review", new_site_review_path(@site) %>
