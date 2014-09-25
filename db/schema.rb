@@ -16,6 +16,17 @@ ActiveRecord::Schema.define(version: 20140925032803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "reviews", force: true do |t|
+    t.integer  "rating",     null: false
+    t.integer  "site_id",    null: false
+    t.integer  "user_id",    null: false
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["site_id", "user_id"], name: "index_reviews_on_site_id_and_user_id", unique: true, using: :btree
+
   create_table "sites", force: true do |t|
     t.string   "title",       null: false
     t.string   "url",         null: false
