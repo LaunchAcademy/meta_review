@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 feature "Create site" do
   scenario "user creates site succesfully" do
@@ -11,7 +11,7 @@ feature "Create site" do
     fill_in "Title", with: "GREAT SITE"
     fill_in "Url", with: "http://www.google.com"
     fill_in "Description", with: "check out this great search engine"
-    click_on 'Create Site'
+    click_on "Create Site"
 
     expect(page).to have_content "GREAT SITE"
   end
