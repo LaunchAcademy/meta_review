@@ -20,3 +20,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'browserstack-screenshot'
 end
+
+group :test do
+  gem 'coveralls', require: false
+end

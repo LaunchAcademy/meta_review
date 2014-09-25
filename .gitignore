@@ -16,3 +16,6 @@
 /tmp
 
 /config/cloudinary.yml
+
+# Ignore simple_cov coverage outpu
+/coverage
