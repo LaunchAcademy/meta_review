@@ -9,6 +9,7 @@ class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
     @reviews = @site.reviews.all
+    @user_review = current_user.reviews.where(site_id: params[:id])
   end
 
   def new

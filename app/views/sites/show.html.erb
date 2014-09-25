@@ -22,4 +22,7 @@
 </ul>
 
 <%= link_to "Back", sites_path %>
+
+<% if @user_review == [] %>
 <%= link_to "Make a Review", new_site_review_path(@site) %>
+<% end %>

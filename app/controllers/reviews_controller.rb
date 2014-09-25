@@ -23,7 +23,8 @@ class ReviewsController < ApplicationController
 
   def update
     @site = Site.find(params[:site_id])
-    @review = @site.reviews.find(:id)
+    @review = @site.reviews.find(params[:id])
+
     if @review.update(review_params)
       redirect_to @site
     else
@@ -35,7 +36,7 @@ class ReviewsController < ApplicationController
     @site = Site.find(params[:site_id])
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to sites_path
+    redirect_to site_path(@site)
   end
 
   private
