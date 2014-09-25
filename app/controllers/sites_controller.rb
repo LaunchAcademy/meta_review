@@ -8,9 +8,6 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
-    @image = Cloudinary::Uploader.explicit("http://www.launchacademy.com",
-  :type => "url2png", :api_key => "142685223365569", :api_secret => "QBEEVDnaVq-ZAPiD6RZKOIXiuE8",
-  :cloud_name => "djbfyo90r")
   end
 
   def new

@@ -17,5 +17,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'cloudinary', '~> 1.0.77'
+  gem 'factory_girl_rails'
+  gem 'browserstack-screenshot'
 end
 
