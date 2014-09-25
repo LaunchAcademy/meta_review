@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+
+
   def new
     @site = Site.find(params[:site_id])
     @review = Review.new

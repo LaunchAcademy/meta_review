@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :sites do
     resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  resources :reviews, only: [] do
+      resources :comments, only: [:new, :create, :edit, :update, :destroy]
+  end
 end
