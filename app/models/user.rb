@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :sites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-  def is_admin?
+  def admin?
     if self.admin == true
       return true
     else
