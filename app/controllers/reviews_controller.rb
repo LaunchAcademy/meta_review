@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @site = Site.find(params[:site_id])
-    @review = Review.find(params[:id])
+    @review = current_user.reviews.find(params[:id])
   end
 
   def update
@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @site = Site.find(params[:site_id])
-    @review = Review.find(params[:id])
+    @review = current_user.reviews.find(params[:id])
     @review.destroy
     redirect_to site_path(@site)
   end

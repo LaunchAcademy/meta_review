@@ -1,0 +1,26 @@
+<!-- app/views/reviews/_form.html.erb -->
+
+<%= form_for [site, review] do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :rating %>
+    <%= f.text_field :rating %>
+  </p>
+
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :body %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

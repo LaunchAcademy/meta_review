@@ -1,6 +1,6 @@
 <h1><%= @site.title %></h1>
 
-<h3><%= link_to @site.url, "#{@site.url}" %></h3>
+<h3><%= link_to @site.url, @site.url %></h3>
 <p><%= @site.description %></p>
 
 <% if current_user == @site.user %>
@@ -14,9 +14,13 @@
       User: <%= review.user.email %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
-      <%= link_to "Edit Review", edit_site_review_path(@site, review)%>
-      <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
+
+      <% if current_user == review.user %>
+        <%= link_to "Edit Review", edit_site_review_path(@site, review)%>
+        <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
+      <% end %>
+
     </li>
   <% end %>
 </ul>

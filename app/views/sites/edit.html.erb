@@ -1,38 +1,3 @@
-<%= form_for @site do |f| %>
-  <% if @site.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@site.errors.count, "error") %> prohibited
-      this article from being saved:</h2>
-    <ul>
-    <% @site.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title, size: "40x1" %>
-  </p>
-
-  <p>
-    <%= f.label :url %><br>
-    <%= f.text_field :url, size: "40x1" %>
-  </p>
-
-  <p>
-    <%= f.label :screenshot %><br>
-    <%= f.file_field :screenshot %>
-  </p>
-
-   <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description, size: "60x20" %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'sites/form', site: @site %>
 
 <%= link_to 'Sites', sites_path %>
