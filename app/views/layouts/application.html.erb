@@ -9,8 +9,57 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Meta Review", root_path %></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><a href="#"></a></li>
+      <li class="has-dropdown">
+        <a href="#">User</a>
+        <ul class="dropdown">
+        <% if user_signed_in? %>
+          <li><%= link_to "Sign out", destroy_user_session_path, data: {method: 'delete'} %></li>
+          <li><%= link_to "Edit Account Information", edit_user_registration_path %> </li>
+          <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+            <li><%= link_to "Create Account", new_user_registration_path %>
+          </li>
+        <% end %>
+      </ul>
+      </li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><%= link_to "All Sites", sites_path %></a></li>
+      <li class="has-form">
+  <div class="row collapse">
+    <div class="large-8 small-9 columns">
+      <input type="text" placeholder=" ">
+    </div>
+    <div class="large-4 small-3 columns">
+      <a href="#" class="alert button expand">Search</a>
+    </div>
+  </div>
+</li>
+    </ul>
+  </section>
+</nav>
+
+
   </head>
+
   <body>
+  <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
 
     <div class="row">
       <div class="small-12 columns">
