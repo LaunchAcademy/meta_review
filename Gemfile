@@ -15,6 +15,7 @@ gem 'cloudinary', '~> 1.0.77'
 gem 'carrierwave'
 
 group :development, :test do
+  gem 'fog'
   gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
