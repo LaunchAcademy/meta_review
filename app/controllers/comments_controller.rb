@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-   before_action :authenticate_user!
+  before_action :authenticate_user!
   def new
     @review = Review.find(params[:review_id])
     @comment = Comment.new
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
   end
 
-  def updat
+  def update
     @review = Review.find(params[:review_id])
     @comment = @review.comments.find(params[:id])
 
@@ -33,7 +33,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-
     @review = Review.find(params[:review_id])
     @comment = current_user.comments.find(params[:id])
     @comment.destroy
@@ -46,5 +45,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 end
-
-
