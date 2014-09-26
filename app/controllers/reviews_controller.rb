@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @review = @site.reviews.build(review_params)
     @review.user = current_user
     if @review.save
-      redirect_to @site
+      redirect_to @site, notice: "Review created successfully!"
     else
       render "reviews/new"
     end
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     @review = @site.reviews.find(params[:id])
 
     if @review.update(review_params)
-      redirect_to @site
+      redirect_to @site, notice: "Review updated successfully!"
     else
       render "reviews/edit"
     end
@@ -36,8 +36,10 @@ class ReviewsController < ApplicationController
   def destroy
     @site = Site.find(params[:site_id])
     @review = current_user.reviews.find(params[:id])
+
     @review.destroy
-    redirect_to site_path(@site)
+
+    redirect_to site_path(@site), notice: "Review destroyed successfully!"
   end
 
   private

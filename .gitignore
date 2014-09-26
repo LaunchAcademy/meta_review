@@ -20,3 +20,6 @@
 
 # Ignore uploaded files in test/development
 /public/uploads
+
+# Ignore simple_cov coverage outpu
+/coverage

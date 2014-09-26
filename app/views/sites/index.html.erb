@@ -3,7 +3,7 @@
 <% @sites.each do |site| %>
   <li><%= link_to site.title, site_path(site) %></li>
 <% end %>
-<br />
+<br >
 
 <%= link_to "Home", root_path %> <br />
 <%= link_to "Create a Site", new_site_path %>

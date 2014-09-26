@@ -7,7 +7,8 @@
   <%= link_to "Edit", edit_site_path %>
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
-<br>
+<br />
+
 <ul>
   <% @reviews.each do |review| %>
     <li>
@@ -31,9 +32,10 @@
   <% end %>
 </ul>
 
-<%= link_to "Back", sites_path %>
+<p><%= link_to "Back", sites_path %></p>
 
-<% if @user_review == [] %>
-<%= link_to "Make a Review", new_site_review_path(@site) %>
-<% end %>
-
+<p>
+  <% if @user_review == [] %>
+    <%= link_to "Make a Review", new_site_review_path(@site) %>
+  <% end %>
+</p>
