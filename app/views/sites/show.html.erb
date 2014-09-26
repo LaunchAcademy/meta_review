@@ -3,42 +3,44 @@
 <h3><%= link_to @site.url, @site.url %></h3>
 <p><%= @site.description %></p>
 
-<img src="<%= cloudinary_url(@site.url,
-  :type => "url2png",
-  :crop => "fill", :width => 150, :height => 200, :gravity => :north,
-  :sign_url => true) %>"/><br>
-
 <% if current_user == @site.user %>
   <%= link_to "Edit", edit_site_path %>
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
-<br>
+<br />
+
+<h2>Reviews</h2>
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      User: <%= review.user.email %><br>
+      User: <%= review.user.username %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
+
       <% if current_user == review.user %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%>
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
-        <%= link_to "Comment", new_review_comment_path(review) %>
        <% end %>
     </li>
 
-    <p>Comments</p>
+    <div class="comment-container">
+      <h4>Comments</h4>
 
       <% review.comments.each do |comment| %>
-        <li><%= comment.body %></li>
+        <li><%= comment.body %> --<%= comment.user.username %></li>
       <% end %>
-      </li>
+
+      <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
+    </div>
   <% end %>
 </ul>
 
-<%= link_to "Back", sites_path %>
-
+<p>
 <% if @user_review == [] %>
 <%= link_to "Make a Review", new_site_review_path(@site) %>
 <% end %>
+</p>
+
+<p><%= link_to "Back", sites_path %></p>
 

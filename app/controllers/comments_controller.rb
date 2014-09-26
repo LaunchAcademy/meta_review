@@ -27,8 +27,8 @@ class CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = @review.comments.find(params[:id])
 
-    if @comment.update(comment_params), notice: "Comment updated successfully!"
-      redirect_to @site
+    if @comment.update(comment_params)
+      redirect_to @site, notice: "Comment updated successfully!"
     else
       render "comments/edit"
     end
