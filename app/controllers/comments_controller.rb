@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+
   def new
     @review = Review.find(params[:review_id])
     @comment = Comment.new
@@ -9,8 +10,9 @@ class CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = @review.comments.build(comment_params)
     @comment.user = current_user
+
     if @comment.save
-      redirect_to site_path(@review.site)
+      redirect_to site_path(@review.site), notice: "Comment created successfully!"
     else
       render "comments/new"
     end
@@ -25,7 +27,7 @@ class CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = @review.comments.find(params[:id])
 
-    if @comment.update(comment_params)
+    if @comment.update(comment_params), notice: "Comment updated successfully!"
       redirect_to @site
     else
       render "comments/edit"
@@ -35,8 +37,10 @@ class CommentsController < ApplicationController
   def destroy
     @review = Review.find(params[:review_id])
     @comment = current_user.comments.find(params[:id])
+
     @comment.destroy
-    redirect_to site_path(@site)
+
+    redirect_to site_path(@site), notice: "Comment destroyed successfully!"
   end
 
   private
