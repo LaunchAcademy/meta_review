@@ -15,9 +15,12 @@
   <% if signed_in? %>
     <%= current_user.username %>
     <%= link_to "Sign out", destroy_user_session_path, data: { method: 'delete' }%>
+    <img src="<%= current_user.avatar %>" height=60 width=50/>
   <% else %>
     <%= link_to "Sign in", new_user_session_path %>
   <% end %>
+
+
 
 <%= yield %>
 
