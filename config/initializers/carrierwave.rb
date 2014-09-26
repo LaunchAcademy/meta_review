@@ -7,8 +7,8 @@ CarrierWave.configure do |config|
     }
     config.fog_directory  = ENV['S3_BUCKET']
 
-    storage :fog
+    config.storage :fog
   else
-    storage :file
+    config.storage :file
   end
 end
