@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to site_path(@review.site), notice: "Comment created successfully!"
+      redirect_to site_path(@review.site), notice: "Comment created!"
     else
       render "comments/new"
     end
@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
 
   def update
     @review = Review.find(params[:review_id])
+    @site = @review.site
     @comment = @review.comments.find(params[:id])
 
     if @comment.update(comment_params)
@@ -36,6 +37,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:review_id])
+    @site = @review.site
     @comment = current_user.comments.find(params[:id])
 
     @comment.destroy
