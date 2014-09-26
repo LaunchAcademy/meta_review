@@ -23,11 +23,16 @@
     <ul class="right">
       <li class="active"><a href="#"></a></li>
       <li class="has-dropdown">
-        <a href="#">User</a>
+      <% if user_signed_in? %>
+        <li><%= current_user.username %><img src="<%= current_user.avatar %>" height=60 width=50 /></li>
+        <% else %>
+        <li> Sign in </li>
+        <% end %>
         <ul class="dropdown">
         <% if user_signed_in? %>
           <li><%= link_to "Sign out", destroy_user_session_path, data: {method: 'delete'} %></li>
           <li><%= link_to "Edit Account Information", edit_user_registration_path %> </li>
+          <li><%= current_user.username %><img src="<%= current_user.avatar %>" height=60 width=50 /></li>
           <% else %>
             <li><%= link_to "Sign in", new_user_session_path %></li>
             <li><%= link_to "Create Account", new_user_registration_path %>
@@ -61,12 +66,14 @@
   <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <%= yield %>
-      </div>
-    </div>
 
-    <%= javascript_include_tag "application" %>
-  </body>
+<div class="row">
+  <div class="small-12 columns">
+    <%= yield %>
+  </div>
+</div>
+
+<%= javascript_include_tag "application" %>
+
+</body>
 </html>

@@ -15,10 +15,11 @@
 /log/*.log
 /tmp
 
-/config/cloudinary.yml
+# Ignore environment variables
+.env
+
+# Ignore uploaded files in test/development
+/public/uploads
 
 # Ignore simple_cov coverage outpu
 /coverage
-
-# Ignore .env file
-/.env

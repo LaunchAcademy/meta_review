@@ -15,21 +15,27 @@
       User: <%= review.user.email %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
-
       <% if current_user == review.user %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%>
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
-      <% end %>
-
+        <%= link_to "Comment", new_review_comment_path(review) %>
+       <% end %>
     </li>
+
+    <p>Comments</p>
+
+      <% review.comments.each do |comment| %>
+        <li><%= comment.body %></li>
+      <% end %>
+      </li>
   <% end %>
 </ul>
 
 <p><%= link_to "Back", sites_path %></p>
 
 <p>
-<% if @user_review == [] %>
-<%= link_to "Make a Review", new_site_review_path(@site) %>
-<% end %>
+  <% if @user_review == [] %>
+    <%= link_to "Make a Review", new_site_review_path(@site) %>
+  <% end %>
 </p>
