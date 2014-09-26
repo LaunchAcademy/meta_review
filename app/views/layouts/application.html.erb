@@ -61,6 +61,18 @@
   <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
 
+  <p><%= link_to "Home", root_path %>
+
+  <% if signed_in? %>
+    <%= current_user.username %>
+    <%= link_to "Sign out", destroy_user_session_path, data: { method: 'delete' }%>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path %>
+  <% end %></p>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
     <div class="row">
       <div class="small-12 columns">
         <%= yield %>

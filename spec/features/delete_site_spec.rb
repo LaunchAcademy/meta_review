@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Delete site" do
-  scenario "user creates site succesfully" do
+  scenario "user deletes site succesfully" do
     site = FactoryGirl.create(:site)
     user = site.user
     sign_in_as(user)
