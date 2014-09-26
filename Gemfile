@@ -18,4 +18,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'carrierwave'
   gem 'dotenv-rails'
+  gem 'fog'
 end
