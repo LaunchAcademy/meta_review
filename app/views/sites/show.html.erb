@@ -10,6 +10,7 @@
 <br />
 
 <h2>Reviews</h2>
+
 <ul>
   <% @reviews.each do |review| %>
     <li>
@@ -39,6 +40,8 @@
   <% end %>
 </ul>
 
+<p><%= link_to "Back", sites_path %></p>
+
 <p>
 <% if @user_review == [] %>
 <%= link_to "Make a Review", new_site_review_path(@site) %>
@@ -46,4 +49,3 @@
 </p>
 
 <p><%= link_to "Back", sites_path %></p>
-

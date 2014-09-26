@@ -19,6 +19,7 @@ group :development, :test do
   gem 'cloudinary', '~> 1.0.77'
   gem 'factory_girl_rails'
   gem 'browserstack-screenshot'
+  gem 'dotenv-rails'
 end
 
 group :test do
