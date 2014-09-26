@@ -15,8 +15,8 @@
 /log/*.log
 /tmp
 
-# Ignore .env
-/.env
+# Ignore environment variables
+.env
 
 # Ignore uploaded files in test/development
 /public/uploads
