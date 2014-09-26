@@ -8,6 +8,7 @@ feature "User signs up" do
 
     fill_in "Username", with: "frankthetank"
     fill_in "Email", with: "frank@thetank.com"
+    fill_in "Username", with: "frankthetank"
     fill_in "Password", with: "password123"
     fill_in "Password confirmation", with: "password123"
     click_on "Sign up"
