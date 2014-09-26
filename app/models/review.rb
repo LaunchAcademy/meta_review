@@ -2,5 +2,15 @@ class Review < ActiveRecord::Base
   belongs_to :site
   belongs_to :user
 
-  validates :rating, :user_id, :site_id, presence: true
+  validates :rating,
+    presence: true,
+    numericality: {
+      greater_than_or_equal_to: 1,
+      less_than_or_equal_to: 5,
+      only_integer: true
+    }
+
+
+  validates :user, presence: true
+  validates :site, presence: true
 end

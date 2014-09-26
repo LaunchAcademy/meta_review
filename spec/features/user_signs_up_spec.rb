@@ -1,10 +1,11 @@
+
 require "rails_helper"
 require "capybara/rails"
 
 feature "User signs up" do
   scenario "user signs up successfully" do
     visit new_user_registration_path
-
+    fill_in "Username", with: "frankthetank"
     fill_in "Email", with: "frank@thetank.com"
     fill_in "Password", with: "password123"
     fill_in "Password confirmation", with: "password123"
