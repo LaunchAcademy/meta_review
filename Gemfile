@@ -12,6 +12,7 @@ gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'kaminari'
+gem 'email_spec'
 
 
 group :development, :test do
@@ -24,6 +25,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'browserstack-screenshot'
   gem 'dotenv-rails'
+  gem 'mailcatcher'
 end
 
 group :test do
