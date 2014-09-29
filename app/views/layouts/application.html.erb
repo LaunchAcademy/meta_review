@@ -49,12 +49,14 @@
       <li class="has-form">
   <div class="row collapse">
     <div class="large-8 small-9 columns">
-      <input type="text" placeholder=" ">
+      <%= form_tag sites_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search]%>
     </div>
     <div class="large-4 small-3 columns">
-      <a href="#" class="alert button expand">Search</a>
+    <%= submit_tag "Search", :name => nil %>
     </div>
   </div>
+  <% end %>
 </li>
     </ul>
   </section>

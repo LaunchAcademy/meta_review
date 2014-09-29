@@ -3,7 +3,7 @@ class SitesController < ApplicationController
     only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    @sites = Site.all
+    @sites = Site.search(params[:search])
   end
 
   def show
