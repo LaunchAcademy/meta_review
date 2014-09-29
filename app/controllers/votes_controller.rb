@@ -6,7 +6,7 @@ class VotesController < ApplicationController
     @vote = Vote.new
     @vote.review = Review.find(params[:review_id])
     @vote.user = current_user
-    @vote.value = 1 if params[:value].to_i >= 1
+    @vote.value = 1 if params[:value].to_i >= 1 #in-line if-then statments
     @vote.value = -1 if params[:value].to_i <= -1
     if @vote.save
       redirect_to @vote.review.site
@@ -16,7 +16,6 @@ class VotesController < ApplicationController
   end
 
   def create
-    binding.pry
   end
 
   def edit
