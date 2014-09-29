@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :sites, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :votes
   has_many :comments, dependent: :destroy
 
   # Include default devise modules. Others available are:
