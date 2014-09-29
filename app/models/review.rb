@@ -1,4 +1,5 @@
 class Review < ActiveRecord::Base
+  paginates_per 5
   belongs_to :site
   belongs_to :user
   has_many :votes
