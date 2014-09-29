@@ -41,9 +41,12 @@
 </ul>
 
 <p>
-<% if @user_review == [] %>
+<% if @user_review.nil? %>
 <%= link_to "Make a Review", new_site_review_path(@site) %>
 <% end %>
 </p>
+<%= paginate @reviews %>
 
 <p><%= link_to "Back", sites_path %></p>
+
+
