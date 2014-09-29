@@ -8,5 +8,6 @@
 </div>
 
 <%= link_to "Create a Site", new_site_path %>
-
+<% unless params[:search] %>
 <%= paginate @sites %>
+<% end %>
