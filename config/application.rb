@@ -15,8 +15,8 @@ Bundler.require(*Rails.groups)
 
 module MetaReview
   class Application < Rails::Application
-    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
-    html_tag
+    config.action_view.field_error_proc = Proc.new { |html_tag|
+      html_tag
     }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
