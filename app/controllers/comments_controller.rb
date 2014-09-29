@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   def update
     @review = Review.find(params[:review_id])
     @site = @review.site
-    @comment = @review.comments.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
 
     if @comment.update(comment_params)
       redirect_to @site, notice: "Comment updated successfully!"
