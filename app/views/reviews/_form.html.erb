@@ -12,7 +12,16 @@
 
   <p>
     <%= f.label :rating %>
-    <%= f.text_field :rating %>
+      <%= f.radio_button(:rating, 5) %>
+      <%= f.label "5" %>
+      <%= f.radio_button(:rating, 4) %>
+      <%= f.label "4" %>
+      <%= f.radio_button(:rating, 3) %>
+      <%= f.label "3" %>
+      <%= f.radio_button(:rating, 2) %>
+      <%= f.label "2" %>
+      <%= f.radio_button(:rating, 1) %>
+      <%= f.label "1" %>
   </p>
 
   <p>
