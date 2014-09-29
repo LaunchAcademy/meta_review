@@ -1,6 +1,7 @@
 class Site < ActiveRecord::Base
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  has_many :comments, through: :reviews
 
   validates :title, uniqueness: true
   validates :url, uniqueness: true
