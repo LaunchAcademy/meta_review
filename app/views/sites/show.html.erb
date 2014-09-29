@@ -10,7 +10,6 @@
 <br />
 
 <h2>Reviews</h2>
-
 <ul>
   <% @reviews.each do |review| %>
     <li>
@@ -18,14 +17,25 @@
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
       Likes: <%=review.votes.sum(:value)%>
-      <%binding.pry%>
-      <%=link_to "Upvote" , new_site_review_vote_path(@site, review, value: 1)%>
-      <%= link_to "Downvote" , new_site_review_vote_path(@site, review, value: -1)%>
-      <% if current_user == review.user %>
+
+      <% if review.vote_from?(current_user) %>
+        <%= change_review_vote_link_for(review, current_user) %>
+      <% else %>
+          <%= button_to "Upvote" , review_votes_path(review),
+            method: :post,
+            params: {value: 1},
+            class: "button" %>
+          <%= button_to "Downvote" , review_votes_path(review),
+            params: {value: 1} ,
+            method: :post,
+            class: "button" %>
+      <% end %>
+
+      <p><% if current_user == review.user %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
-       <% end %>
+       <% end %></p>
     </li>
 
     <div class="comment-container">
@@ -44,12 +54,9 @@
 </ul>
 
 <p>
-<% if @user_review.nil? %>
+<% if @user_review == nil %>
 <%= link_to "Make a Review", new_site_review_path(@site) %>
 <% end %>
 </p>
-<%= paginate @reviews %>
 
 <p><%= link_to "Back", sites_path %></p>
-
-

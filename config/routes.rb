@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   resources :sites do
-    resources :reviews, only: [:new, :create, :edit, :update, :destroy] do
-      resources :votes
-    end
+    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :reviews, only: [] do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :votes, only: [:create, :update]
   end
 end

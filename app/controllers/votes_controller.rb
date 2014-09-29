@@ -1,13 +1,9 @@
 class VotesController < ApplicationController
-  def show
-  end
-
-  def new
+  def create
     @vote = Vote.new
     @vote.review = Review.find(params[:review_id])
     @vote.user = current_user
-    @vote.value = 1 if params[:value].to_i >= 1 #in-line if-then statments
-    @vote.value = -1 if params[:value].to_i <= -1
+    @vote.value = params[:value]
     if @vote.save
       redirect_to @vote.review.site
     else
@@ -15,12 +11,13 @@ class VotesController < ApplicationController
     end
   end
 
-  def create
-  end
-
-  def edit
-  end
-
-  def delete
+  def update
+    @vote = Vote.find(params[:id])
+    @vote.value = params[:value]
+    if @vote.save
+      redirect_to @vote.review.site
+    else
+      redirect_to Review.find(params[:review_id]).site
+    end
   end
 end
