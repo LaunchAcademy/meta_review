@@ -14,7 +14,9 @@
       User: <%= review.user.email %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
-
+      Likes: <%=review.votes.sum(:value)%>
+      <%= link_to "Upvote" , new_site_review_vote_path(@site, review, value: 1)%>
+      <%= link_to "Downvote" , new_site_review_vote_path(@site, review, value: -1)%>
       <% if current_user == review.user %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%>
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
