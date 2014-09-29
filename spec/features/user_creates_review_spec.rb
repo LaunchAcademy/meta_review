@@ -5,6 +5,10 @@ feature "Authenticated user can create review on site" do
     user = FactoryGirl.create(:user)
     site = FactoryGirl.create(:site)
     sign_in_as(user)
+<<<<<<< HEAD
+=======
+    visit new_site_review_path(site)
+>>>>>>> c1efcdce5bac58bec7746720d59fbce1210a4fed
 
     visit new_site_review_path(site)
     fill_in "Rating", with: "1"
