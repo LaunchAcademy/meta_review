@@ -11,6 +11,8 @@ gem 'foundation-rails', '5.4.3.1'
 gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
+gem 'kaminari'
+
 
 group :development, :test do
   gem 'capybara'
