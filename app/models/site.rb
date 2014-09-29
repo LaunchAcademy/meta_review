@@ -9,9 +9,9 @@ class Site < ActiveRecord::Base
 
   def self.search(search)
     if search
-      self.where("lower(title) LIKE ?", "%#{search}%".downcase)
+      where("title ILIKE ?", "%#{search}%")
     else
-      self.all
+      all
     end
   end
 end
