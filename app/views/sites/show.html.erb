@@ -19,7 +19,7 @@
       Description: <%= review.body %><br>
 
       <% if current_user == review.user %>
-        <%= link_to "Edit Review", edit_site_review_path(@site, review)%>
+        <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
        <% end %>
@@ -30,7 +30,7 @@
 
       <% review.comments.each do |comment| %>
         <li><%= comment.body %> --<%= comment.user.username %>
-        <%= link_to "Edit", edit_review_comment_path(review, comment)%>
+        <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
         <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
         { confirm: "Are your sure?" } %></li>
       <% end %>
@@ -39,8 +39,6 @@
     </div>
   <% end %>
 </ul>
-
-<p><%= link_to "Back", sites_path %></p>
 
 <p>
 <% if @user_review == [] %>
