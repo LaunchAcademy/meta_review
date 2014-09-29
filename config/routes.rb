@@ -7,4 +7,8 @@ Rails.application.routes.draw do
       resources :votes
     end
   end
+
+  resources :reviews, only: [] do
+    resources :comments, only: [:new, :create, :edit, :update, :destroy]
+  end
 end

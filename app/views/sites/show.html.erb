@@ -7,28 +7,45 @@
   <%= link_to "Edit", edit_site_path %>
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
-<br>
+<br />
+
+<h2>Reviews</h2>
+
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      User: <%= review.user.email %><br>
+      User: <%= review.user.username %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
       Likes: <%=review.votes.sum(:value)%>
       <%= link_to "Upvote" , new_site_review_vote_path(@site, review, value: 1)%>
       <%= link_to "Downvote" , new_site_review_vote_path(@site, review, value: -1)%>
       <% if current_user == review.user %>
-        <%= link_to "Edit Review", edit_site_review_path(@site, review)%>
+        <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
+       <% end %>
+    </li>
+
+    <div class="comment-container">
+      <h4>Comments</h4>
+
+      <% review.comments.each do |comment| %>
+        <li><%= comment.body %> --<%= comment.user.username %>
+        <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
+        <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
+        { confirm: "Are your sure?" } %></li>
       <% end %>
 
-    </li>
+      <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
+    </div>
   <% end %>
 </ul>
 
-<%= link_to "Back", sites_path %>
-
+<p>
 <% if @user_review == [] %>
 <%= link_to "Make a Review", new_site_review_path(@site) %>
 <% end %>
+</p>
+
+<p><%= link_to "Back", sites_path %></p>
