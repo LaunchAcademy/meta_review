@@ -1,11 +1,10 @@
 <h1>Review Sites</h1>
-
-<% @sites.each do |site| %>
 <div class="row" data-equalizer>
-<div class="large-6 columns panel" data-equalizer-watch>
+<% @sites.each do |site| %>
+<div class="large-4 columns panel" data-equalizer-watch>
 <h5><%= link_to site.title, site_path(site) %></h5>
 </div>
 <% end %>
+</div>
 
-<%= link_to "Home", root_path %> <br />
 <%= link_to "Create a Site", new_site_path %>
