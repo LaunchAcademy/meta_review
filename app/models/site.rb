@@ -8,10 +8,11 @@ class Site < ActiveRecord::Base
   validates :url, uniqueness: true
   validates :title, :url, :description, :user_id, presence: true
 
-  def self.search(search)
+  def self.search
     if search
       where("title ILIKE ?", "%#{search}%")
     else
+
      @sites = all.order(:title).page params[:page]
     end
   end

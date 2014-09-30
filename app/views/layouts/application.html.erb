@@ -25,7 +25,7 @@
       <li class="active"><a href="#"></a></li>
       <% if user_signed_in? %>
       <li class="has-dropdown">
-        <a href="#"><img src = "<%= current_user.avatar %>" height=60 width=50 /> <%= current_user.username%>  </a>
+        <%= image_tag current_user.avatar, height: 60, width: 50 %> <%= current_user.username%>
         <% else %>
         <li class="has-dropdown">
         <%= link_to "Sign up", new_user_registration_path %>
