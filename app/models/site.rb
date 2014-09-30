@@ -10,9 +10,9 @@ class Site < ActiveRecord::Base
 
   def self.search
     if search
-      where("title ILIKE ?", "%#{search}%")
+      where("title ILIKE?", "%#{search}%")
     else
-      @sites = all.order(:title).page params[:page]
+      all
     end
   end
 end

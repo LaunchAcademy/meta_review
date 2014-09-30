@@ -13,6 +13,7 @@ gem 'fog'
 gem 'browserstack-screenshot'
 gem 'cloudinary', '~> 1.0.77'
 gem 'carrierwave'
+gem 'simple_form'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'kaminari'
