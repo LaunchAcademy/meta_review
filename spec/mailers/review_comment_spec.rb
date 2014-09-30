@@ -6,7 +6,7 @@ RSpec.describe ReviewComment, type: :mailer do
     let(:mail) { ReviewComment.comment(comment) }
     let(:review) { comment.review }
     let(:recipient) { review.user }
-    let(:url) { "http://meta-review.herokuapp.com/site/#{review.id}" }
+    let(:url) { site_path(review.site) }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Someone commented on your review!")

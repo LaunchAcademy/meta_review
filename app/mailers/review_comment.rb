@@ -3,8 +3,8 @@ class ReviewComment < ActionMailer::Base
 
   def comment(comment)
     @comment = comment
-    @user = @comment.review.user
-    @url = "http://meta-review.herokuapp.com/site/#{@comment.review.id}"
+    @review = @comment.review
+    @user = @review.user
 
     mail to: @user.email,
          subject: "Someone commented on your review!"

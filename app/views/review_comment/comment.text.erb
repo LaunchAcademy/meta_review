@@ -1,9 +1,9 @@
- Welcome to MetaReview, <%= @user.username %>
+ Welcome to MetaReview <%= @user.username %>
 
 Someone commented on your review!
 
-  Here is the comment....
+  Here is the comment...
 
   <%= @comment.body %>
 
-@url
+  <%= link_to "Go to comment", site_path(@review.site) %>

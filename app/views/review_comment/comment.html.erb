@@ -4,15 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to MetaReview, <%= @user.username %></h1>
+    <h1>Welcome to MetaReview <%= @user.username %></h1>
     <p>
       Someone commented on your review!<br>
     </p>
     <p>
-      Here is the comment....
+      Here is the comment...
     </p>
     <p><%= @comment.body %></p>
 
-    <p><%= link_to "MetaReview", @url %></p>
+    <p><%= link_to "Go to comment", site_path(@review.site) %></p>
   </body>
 </html>
