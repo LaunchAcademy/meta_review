@@ -4,6 +4,6 @@
 <br><br>
 <% @sites.each do |site| %>
   <% unless (stw_show_url site.url) =~ /</ %>
-    <%= stw_show site.url %>
+    <a href="/sites/<%= site.id %>"><%= stw_show site.url %></a>
   <% end %>
 <% end %>
