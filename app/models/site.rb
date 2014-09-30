@@ -8,6 +8,13 @@ class Site < ActiveRecord::Base
   validates :url, uniqueness: true
   validates :title, :url, :description, :user_id, presence: true
 
+
+  def self.search(search)
+    if search
+      where("title ILIKE?", "%#{search}%")
+    else
+      all
+    end
   def formatted_url
     url =~ /\Ahttp:\/\// ? url : "http://#{url}"
   end

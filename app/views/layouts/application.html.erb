@@ -20,10 +20,16 @@
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
+
     <ul class="right">
       <li class="active"><a href="#"></a></li>
+      <% if user_signed_in? %>
       <li class="has-dropdown">
-        <a href="#">User</a>
+        <%= image_tag current_user.avatar, height: 50, width: 40 %> <strong><%= current_user.username%></strong>
+        <% else %>
+        <li class="has-dropdown">
+        <%= link_to "Sign up", new_user_registration_path %>
+        <% end %>
         <ul class="dropdown">
         <% if user_signed_in? %>
           <li><%= link_to "Sign out", destroy_user_session_path, data: {method: 'delete'} %></li>
@@ -43,12 +49,14 @@
       <li class="has-form">
   <div class="row collapse">
     <div class="large-8 small-9 columns">
-      <input type="text" placeholder=" ">
+      <%= form_tag sites_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search]%>
     </div>
     <div class="large-4 small-3 columns">
-      <a href="#" class="alert button expand">Search</a>
+    <%= submit_tag "Search", :name => nil %>
     </div>
   </div>
+  <% end %>
 </li>
     </ul>
   </section>
@@ -61,12 +69,14 @@
   <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <%= yield %>
-      </div>
-    </div>
 
-    <%= javascript_include_tag "application" %>
-  </body>
+<div class="row">
+  <div class="small-12 columns">
+    <%= yield %>
+  </div>
+</div>
+
+<%= javascript_include_tag "application" %>
+
+</body>
 </html>

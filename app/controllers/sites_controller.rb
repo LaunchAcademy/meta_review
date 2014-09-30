@@ -3,12 +3,12 @@ class SitesController < ApplicationController
     only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    @sites = Site.order(:title).page params[:page]
+    @sites = Site.search(params[:search]).order(:title).page(params[:page])
   end
 
   def show
     @site = Site.find(params[:id])
-    @reviews = @site.reviews.order(:body).page params[:page]
+    @reviews = @site.reviews.order(:body).page(params[:page])
     if current_user
       @user_review = @site.reviews.find_by(user: current_user)
     end
