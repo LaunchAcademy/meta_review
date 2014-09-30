@@ -22,5 +22,4 @@
 /.env
 
 # Ignore STW API keys & pictures
-/config/initializers/assets.rb
 /public/stw
