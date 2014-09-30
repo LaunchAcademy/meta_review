@@ -8,7 +8,7 @@ class Site < ActiveRecord::Base
   validates :url, uniqueness: true
   validates :title, :url, :description, :user_id, presence: true
 
-  def self.search
+  def self.search(search)
     if search
       where("title ILIKE?", "%#{search}%")
     else
