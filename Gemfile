@@ -16,7 +16,6 @@ gem 'kaminari'
 gem 'nokogiri'
 gem 'stw_engine'
 
-
 group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
@@ -27,6 +26,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'browserstack-screenshot'
   gem 'dotenv-rails'
+  gem 'mailcatcher'
+  gem 'email_spec'
 end
 
 group :test do

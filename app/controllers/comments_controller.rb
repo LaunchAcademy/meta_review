@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      ReviewComment.comment(@comment).deliver
       redirect_to site_path(@review.site), notice: "Comment created!"
     else
       render "comments/new"
