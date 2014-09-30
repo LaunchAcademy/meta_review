@@ -2,7 +2,7 @@ class SitesController < ApplicationController
   before_action :authenticate_user!,
     only: [:new, :create, :update, :edit, :destroy]
 
-  def index
+  def index(search)
     if params[:search]
       @sites = Site.search(params[:search])
     else
