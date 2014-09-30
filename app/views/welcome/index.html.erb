@@ -1,11 +1,9 @@
 <h1>Welcome to Meta Review</h1>
 
 <%= link_to "All Review Sites", sites_path %><br><br>
+
 <% @sites.each do |site| %>
-  <% unless (stw_show_url site.url) =~ /</ %>
-    <span class="screenshot"><a href="/sites/<%= site.id %>"><%= stw_show site.url %></a>
-  <% end %>
+  <%= screenshot_for_site(site) %>
 <% end %>
+
 <br><br>
-
-
