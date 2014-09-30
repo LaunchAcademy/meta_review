@@ -31,9 +31,12 @@
 
       <% review.comments.each do |comment| %>
         <li><%= comment.body %> --<%= comment.user.username %>
-        <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
-        <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
-        { confirm: "Are your sure?" } %></li>
+          <% if comment.user == current_user %>
+            <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
+            <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
+            { confirm: "Are your sure?" } %>
+          <% end %>
+        </li>
       <% end %>
 
       <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
