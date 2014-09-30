@@ -12,6 +12,8 @@ gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'kaminari'
+gem 'nokogiri'
+gem 'stw_engine'
 
 
 group :development, :test do
