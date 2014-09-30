@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'spring',        group: :development
 gem 'foundation-rails', '5.4.3.1'
 gem 'devise'
+gem 'simple_form'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'kaminari'
