@@ -1,9 +1,5 @@
 <h1><%= @site.title %></h1>
-<% if @site.url =~ /\Ahttp:\/\// %>
-  <h3><%= link_to @site.url, @site.url %></h3>
-<% else %>
-  <h3><%= link_to @site.url, "http://#{@site.url}" %></h3>
-<% end %>
+  <h3><%= link_to @site.url, @site.formatted_url %></h3>
 <p><%= @site.description %></p>
 
 <% if current_user == @site.user %>
@@ -53,7 +49,3 @@
 <%= paginate @reviews %>
 
 <p><%= link_to "Back", sites_path %></p>
-
-
-
-
