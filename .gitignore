@@ -21,5 +21,6 @@
 # Ignore .env file
 /.env
 
-# Ignore STW API keys
+# Ignore STW API keys & pictures
 /config/initializers/assets.rb
+/public/stw
