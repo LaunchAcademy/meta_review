@@ -7,7 +7,7 @@ RSpec.describe ReviewComment, :type => :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Someone commented on your review!")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["admin@meta-review.herokuapp.com"])
     end
 
     it "renders the body" do
