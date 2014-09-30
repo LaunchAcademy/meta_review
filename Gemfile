@@ -13,8 +13,8 @@ gem 'simple_form'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'kaminari'
-gem 'email_spec'
-
+gem 'nokogiri'
+gem 'stw_engine'
 
 group :development, :test do
   gem 'capybara'
@@ -27,6 +27,7 @@ group :development, :test do
   gem 'browserstack-screenshot'
   gem 'dotenv-rails'
   gem 'mailcatcher'
+  gem 'email_spec'
 end
 
 group :test do

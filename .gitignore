@@ -20,3 +20,6 @@
 
 # Ignore .env file
 /.env
+
+# Ignore STW API keys & pictures
+/public/stw
