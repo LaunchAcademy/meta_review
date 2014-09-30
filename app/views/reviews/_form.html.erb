@@ -1,24 +1,14 @@
-<%= form_for [site, review] do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this article from being saved:</h2>
-      <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+<%= simple_form_for [site, review] do |f| %>
+  <div class="row">
+    <div class="small-10 medium-11 columns">
+      <div class="range-slider" data-slider data-options="display_selector: #review_rating; start: 1; end: 5;">
+        <span class="range-slider-handle" role="slider" tabindex="0"></span>
+        <span class="range-slider-active-segment"></span>
+      </div>
     </div>
-  <% end %>
+  </div>
 
-  <p>
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
-  </p>
-
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :body %>
-  </p>
-
-  <%= f.submit %>
+  <%= f.input :rating, label: "Rating (1-5)" %>
+  <%= f.input :body, label: "Description" %>
+  <%= f.button :submit %>
 <% end %>

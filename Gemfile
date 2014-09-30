@@ -9,6 +9,9 @@ gem 'jquery-rails'
 gem 'spring',        group: :development
 gem 'foundation-rails', '5.4.3.1'
 gem 'devise'
+gem 'simple_form'
+gem 'rails_12factor', group: :production
+gem 'unicorn'
 gem 'kaminari'
 gem 'nokogiri'
 gem 'stw_engine'
@@ -23,6 +26,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'browserstack-screenshot'
   gem 'dotenv-rails'
+  gem 'mailcatcher'
+  gem 'email_spec'
 end
 
 group :test do

@@ -7,4 +7,8 @@ class Site < ActiveRecord::Base
   validates :title, uniqueness: true
   validates :url, uniqueness: true
   validates :title, :url, :description, :user_id, presence: true
+
+  def formatted_url
+    url =~ /\Ahttp:\/\// ? url : "http://#{url}"
+  end
 end
