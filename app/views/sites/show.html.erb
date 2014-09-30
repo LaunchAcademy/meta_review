@@ -26,7 +26,7 @@
             params: {value: 1},
             class: "button" %>
           <%= button_to "Downvote" , review_votes_path(review),
-            params: {value: 1} ,
+            params: {value: -1} ,
             method: :post,
             class: "button" %>
       <% end %>
