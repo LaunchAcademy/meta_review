@@ -17,6 +17,8 @@ gem 'simple_form'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'kaminari'
+gem 'nokogiri'
+gem 'stw_engine'
 
 group :development, :test do
   gem 'fog'
@@ -27,6 +29,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
+  gem 'mailcatcher'
+  gem 'email_spec'
 end
 
 group :test do

@@ -1,6 +1,5 @@
 <h1><%= @site.title %></h1>
-
-<h3><%= link_to @site.url, @site.url %></h3>
+  <h3><%= link_to @site.url, @site.formatted_url %></h3>
 <p><%= @site.description %></p>
 
 <% if current_user == @site.user %>
@@ -8,7 +7,9 @@
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
 <br />
-
+<% unless (stw_show_url @site.url) =~ /</ %>
+  <span class="screenshot"><%= stw_show @site.url %></span><br>
+<% end %>
 <h2>Reviews</h2>
 
 <ul>

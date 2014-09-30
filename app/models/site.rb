@@ -15,4 +15,7 @@ class Site < ActiveRecord::Base
       all
     end
   end
+  def formatted_url
+    url =~ /\Ahttp:\/\// ? url : "http://#{url}"
+  end
 end

@@ -23,3 +23,10 @@
 
 # Ignore simple_cov coverage outpu
 /coverage
+
+# Ignore .env file
+/.env
+
+# Ignore STW API keys & pictures
+/public/stw
+
