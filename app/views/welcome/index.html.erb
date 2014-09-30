@@ -1,4 +1,7 @@
 <h1>Welcome to Meta Review</h1>
 
-<%= link_to "All Review Sites", sites_path %>
-<%%>
+<%= link_to "All Review Sites", sites_path %><br><br>
+
+<% @sites.each do |site| %>
+  <%= screenshot_for_site(site) %>
+<% end %>
