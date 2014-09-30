@@ -21,7 +21,7 @@ feature "Authenticated user can edit review on site" do
     fill_in "Rating", with: ""
     click_on "Update Review"
 
-    expect(page).to have_content "Rating can't be blank"
+    expect(page).to have_content "can't be blank"
   end
 
   scenario "User fails to update a review for site-rating over 5" do
@@ -33,7 +33,7 @@ feature "Authenticated user can edit review on site" do
     fill_in "Rating", with: "6"
     click_on "Update Review"
 
-    expect(page).to have_content "Rating must be less than or equal to 5"
+    expect(page).to have_content "must be less than or equal to 5"
   end
 
   scenario "User fails to update a review for site-rating under 1" do
@@ -45,6 +45,6 @@ feature "Authenticated user can edit review on site" do
     fill_in "Rating", with: "0"
     click_on "Update Review"
 
-    expect(page).to have_content "Rating must be greater than or equal to 1"
+    expect(page).to have_content "must be greater than or equal to 1"
   end
 end
