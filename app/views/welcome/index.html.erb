@@ -1,8 +1,9 @@
 <h1>Welcome to Meta Review</h1>
 
 <%= link_to "All Review Sites", sites_path %>
-<br>
-<br>
+<br><br>
 <% @sites.each do |site| %>
-  <%= stw_show site.url %>
+  <% unless (stw_show_url site.url) =~ /</ %>
+    <%= stw_show site.url %>
+  <% end %>
 <% end %>

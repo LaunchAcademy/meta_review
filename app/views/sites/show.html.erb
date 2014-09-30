@@ -11,7 +11,9 @@
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
 <br />
-<%= stw_show @site.url %><br>
+<% unless (stw_show_url @site.url) =~ /</ %>
+  <%= stw_show @site.url %><br>
+<% end %>
 <h2>Reviews</h2>
 
 <ul>
