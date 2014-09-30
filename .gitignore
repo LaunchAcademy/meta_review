@@ -20,3 +20,6 @@
 
 # Ignore .env file
 /.env
+
+# Ignore screenshot files
+/public/stw
