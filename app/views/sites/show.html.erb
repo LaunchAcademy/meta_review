@@ -1,14 +1,14 @@
 <h1><%= @site.title %></h1>
-
-<h3><%= link_to @site.url, @site.url %></h3>
+  <h3><%= link_to @site.url, @site.formatted_url %></h3>
 <p><%= @site.description %></p>
-
 <% if user_has_permision_to_change?(@site) %>
   <%= link_to "Edit", edit_site_path %>
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
 <br />
-
+<% unless (stw_show_url @site.url) =~ /</ %>
+  <span class="screenshot"><%= stw_show @site.url %></span><br>
+<% end %>
 <h2>Reviews</h2>
 
 <ul>
@@ -26,7 +26,6 @@
 
     <div class="comment-container">
       <h4>Comments</h4>
-
       <% review.comments.each do |comment| %>
         <li><%= comment.body %> --<%= comment.user.username %>
           <%if user_has_permision_to_change?(comment)%>

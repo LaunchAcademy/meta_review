@@ -4,12 +4,13 @@ feature "Admin deletes comment" do
   scenario "admin deletes comment succesfully" do
     comment = FactoryGirl.create(:comment)
     admin_user = FactoryGirl.create(:user)
-    admin_user.admin = true
+    admin_user.make_admin
     sign_in_as(admin_user)
 
-    visit site_path(comment.site)
-
-    click_on "Delete"
+    visit site_path(comment.review.site)
+    within('.comment-container') do
+      click_on "Delete"
+    end
 
     expect(page).to have_content "Comment destroyed successfully!"
   end

@@ -4,12 +4,12 @@ feature "Admin deletes site" do
   scenario "admin deletes site succesfully" do
     site = FactoryGirl.create(:site)
     admin_user = FactoryGirl.create(:user)
-    admin_user.admin = true
+    admin_user.make_admin
     sign_in_as(admin_user)
 
     visit site_path(site)
 
-    click_on "Delete"
+    click_on("Delete", match: :first)
 
     expect(page).to have_content "Site destroyed successfully!"
   end

@@ -9,7 +9,6 @@ class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
     @reviews = @site.reviews.order(:body).page params[:page]
-
     if current_user
       @user_review = @site.reviews.find_by(user: current_user)
     end
@@ -30,11 +29,11 @@ class SitesController < ApplicationController
   end
 
   def edit
-    @site = current_user.sites.find(params[:id])
+    @site = site_assigner
   end
 
   def update
-    @site = current_user.sites.find(params[:id])
+    @site = site_assigner
 
     if @site.update(site_params)
       redirect_to @site, notice: 'Site updated successfully!'
@@ -44,8 +43,7 @@ class SitesController < ApplicationController
   end
 
   def destroy
-    @site = current_user.sites.find(params[:id])
-
+    @site = site_assigner
     @site.destroy
 
     redirect_to sites_path, notice: 'Site destroyed successfully!'
@@ -55,6 +53,11 @@ class SitesController < ApplicationController
 
   def site_params
     params.require(:site).permit(:title, :url, :description, :screenshot)
+  end
+
+  def site_assigner
+    current_user.admin ? Site.find(params[:id]) :
+    current_user.sites.find(params[:id]) ##redundency for safty
   end
 
 end
