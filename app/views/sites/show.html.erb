@@ -8,6 +8,9 @@
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
 <br />
+<% unless (stw_show_url @site.url) =~ /</ %>
+  <span class="screenshot"><%= stw_show @site.url %></span><br>
+<% end %>
 
 <h2>Reviews</h2>
 <ul>
