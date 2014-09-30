@@ -3,7 +3,7 @@
 <h3><%= link_to @site.url, @site.url %></h3>
 <p><%= @site.description %></p>
 
-<% if current_user == @site.user %>
+<% if user_has_permision_to_change?(@site) %>
   <%= link_to "Edit", edit_site_path %>
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
@@ -17,8 +17,7 @@
       User: <%= review.user.username %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
-
-      <% if current_user == review.user %>
+      <% if user_has_permision_to_change?(review) %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
@@ -30,9 +29,12 @@
 
       <% review.comments.each do |comment| %>
         <li><%= comment.body %> --<%= comment.user.username %>
-        <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
-        <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
-        { confirm: "Are your sure?" } %></li>
+          <%if user_has_permision_to_change?(comment)%>
+            <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
+            <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
+              { confirm: "Are your sure?" } %>
+          <%end%>
+        </li>
       <% end %>
 
       <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
@@ -48,5 +50,3 @@
 <%= paginate @reviews %>
 
 <p><%= link_to "Back", sites_path %></p>
-
-
