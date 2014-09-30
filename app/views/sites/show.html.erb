@@ -14,7 +14,7 @@
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      User: <%= review.user.username %><br>
+      User: <%= image_tag current_user.avatar, height: 20, width: 10 %> <%= review.user.username %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
 
@@ -29,7 +29,7 @@
       <h4>Comments</h4>
 
       <% review.comments.each do |comment| %>
-        <li><%= comment.body %> --<%= comment.user.username %>
+        <li><%= image_tag current_user.avatar, height: 30, width: 20 %> <%= comment.body %> --<%= comment.user.username %>
         <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
         <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
         { confirm: "Are your sure?" } %></li>
