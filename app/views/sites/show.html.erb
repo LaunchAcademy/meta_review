@@ -34,7 +34,7 @@
              class: "vote_button" %>
           <% end %>
       <% end %>
-
+      <br><br>
       <p><% if current_user == review.user %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
