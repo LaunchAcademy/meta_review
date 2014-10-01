@@ -15,10 +15,16 @@
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      User: <%= image_tag review.user.avatar, height: 20, width: 10 %> <%= review.user.username %><br>
+      User: <%= image_tag review.user.avatar, height: 36, width: 24 %> <%= review.user.username %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
       Likes: <%=review.votes.sum(:value)%>
+
+      <p><% if current_user == review.user %>
+        <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
+        <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
+        { confirm: "Are your sure?" } %>
+       <% end %></p>
 
       <% if review.vote_from?(current_user) %>
         <%= change_review_vote_link_for(review, current_user) %>
@@ -35,15 +41,12 @@
           <% end %>
       <% end %>
       <br><br>
-      <p><% if current_user == review.user %>
-        <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
-        <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
-        { confirm: "Are your sure?" } %>
-       <% end %></p>
     </li>
 
     <div class="comment-container">
-      <h4>Comments</h4>
+      <% unless review.comments == [] %>
+        <br><h4>Comments</h4>
+      <% end %>
 
       <% review.comments.each do |comment| %>
         <li><%= image_tag comment.user.avatar, height: 30, width: 20 %> <%= comment.body %> --<%= comment.user.username %>
@@ -54,6 +57,7 @@
         <% end %>
       <% end %>
 
+      <br>
       <% if current_user %>
         <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
       <% end %>
