@@ -61,7 +61,7 @@
           <img src="/meta_default.jpg" height=36 width=24 />
         <% end %>
         <%= comment.body %> --<%= comment.user.username %>
-        <% if comment.user == current_user %>
+        <% if user_has_permision_to_change?(comment) %>
           <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
           <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
           { confirm: "Are your sure?" } %></li>

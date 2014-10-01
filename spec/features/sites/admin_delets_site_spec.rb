@@ -8,8 +8,8 @@ feature "Admin deletes site" do
     sign_in_as(admin_user)
 
     visit site_path(site)
-
-    click_on("Delete", match: :first)
+    save_and_open_page
+    click_on "Delete"
 
     expect(page).to have_content "Site destroyed successfully!"
   end
