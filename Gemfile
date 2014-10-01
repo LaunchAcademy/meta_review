@@ -21,7 +21,6 @@ gem 'nokogiri'
 gem 'stw_engine'
 
 group :development, :test do
-  gem 'fog'
   gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
