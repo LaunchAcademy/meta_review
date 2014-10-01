@@ -15,6 +15,12 @@
 /log/*.log
 /tmp
 
+# Ignore environment variables
+.env
+
+# Ignore uploaded files in test/development
+/public/uploads
+
 # Ignore simple_cov coverage outpu
 /coverage
 
@@ -23,3 +29,4 @@
 
 # Ignore STW API keys & pictures
 /public/stw
+

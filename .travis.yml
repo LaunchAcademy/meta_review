@@ -3,3 +3,4 @@ rvm:
   - 2.1.2
 before_script:
   - psql -c 'create database meta_review_test;' -U postgres
+
