@@ -15,7 +15,14 @@
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      User: <%= image_tag review.user.avatar, height: 36, width: 24 %> <%= review.user.username %><br>
+
+      User:
+      <% if review.user.avatar.path %>
+        <%= image_tag review.user.avatar, height: 36, width: 24 %>
+      <% else %>
+        <img src="/meta_default.jpg" height=36 width=24 />
+      <% end %>
+      <%= review.user.username %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
       Likes: <%=review.votes.sum(:value)%>
@@ -49,7 +56,13 @@
       <% end %>
 
       <% review.comments.each do |comment| %>
-        <li><%= image_tag comment.user.avatar, height: 30, width: 20 %> <%= comment.body %> --<%= comment.user.username %>
+        <li>
+        <% if comment.user.avatar.path %>
+          <%= image_tag comment.user.avatar, height: 30, width: 20 %>
+        <% else %>
+          <img src="/meta_default.jpg" height=36 width=24 />
+        <% end %>
+        <%= comment.body %> --<%= comment.user.username %>
         <% if comment.user == current_user %>
           <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
           <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
