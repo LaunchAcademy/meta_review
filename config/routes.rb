@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
   root to: 'welcome#index'
 
@@ -9,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [] do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :votes, only: [:create, :update]
   end
 end
