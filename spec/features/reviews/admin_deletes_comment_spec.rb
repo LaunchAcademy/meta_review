@@ -8,10 +8,7 @@ feature "Admin deletes review" do
     sign_in_as(admin_user)
 
       visit site_path(review.site)
-
-    within first('ul') do
-      click_on "Delete"
-    end
+      click_on "Delete Review"
 
     expect(page).to have_content "Review destroyed successfully"
   end

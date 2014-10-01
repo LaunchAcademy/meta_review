@@ -3,7 +3,7 @@ class SitesController < ApplicationController
     only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    @sites = Site.order(:title).page params[:page]
+    @sites = Site.search(params[:search]).order(:title).page(params[:page])
   end
 
   def show
