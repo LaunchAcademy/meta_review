@@ -1,6 +1,19 @@
-.comment-container{
-  margin-top: 3em;
-  margin-left: 3em;
+.comment-container {
+  margin-top: -1.5em;
+  margin-left: 1em;
+  list-style-type: none;
+}
+
+.comment-container li, a {
+  font-size: 12px;
+}
+
+.comment-container h4 {
+  font-size: 16px;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .vote_button {
