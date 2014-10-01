@@ -15,7 +15,7 @@
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      User: <%= image_tag current_user.avatar, height: 20, width: 10 %> <%= review.user.username %><br>
+      User: <%= image_tag review.user.avatar, height: 20, width: 10 %> <%= review.user.username %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
 
@@ -30,7 +30,7 @@
       <h4>Comments</h4>
 
       <% review.comments.each do |comment| %>
-        <li><%= image_tag current_user.avatar, height: 30, width: 20 %> <%= comment.body %> --<%= comment.user.username %>
+        <li><%= image_tag comment.user.avatar, height: 30, width: 20 %> <%= comment.body %> --<%= comment.user.username %>
         <% if comment.user == current_user %>
           <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
           <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
@@ -47,7 +47,7 @@
 
 <p>
 <% if @user_review.nil? %>
-<%= link_to "Make a Review", new_site_review_path(@site) %>
+  <%= link_to "Make a Review", new_site_review_path(@site) %>
 <% end %>
 </p>
 <%= paginate @reviews %>
