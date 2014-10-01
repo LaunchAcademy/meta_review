@@ -15,6 +15,6 @@ module VotesHelper
       method:
         :put,
         params: { value: value },
-      class: "button"
+        class: "button"
   end
 end
