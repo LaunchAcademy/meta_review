@@ -15,7 +15,7 @@
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      User: <%= review.user.username %><br>
+      User: <%= image_tag current_user.avatar, height: 20, width: 10 %> <%= review.user.username %><br>
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
 
@@ -30,16 +30,17 @@
       <h4>Comments</h4>
 
       <% review.comments.each do |comment| %>
-        <li><%= comment.body %> --<%= comment.user.username %>
-          <% if comment.user == current_user %>
-            <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
-            <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
-            { confirm: "Are your sure?" } %>
-          <% end %>
-        </li>
+        <li><%= image_tag current_user.avatar, height: 30, width: 20 %> <%= comment.body %> --<%= comment.user.username %>
+        <% if comment.user == current_user %>
+          <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
+          <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
+          { confirm: "Are your sure?" } %></li>
+        <% end %>
       <% end %>
 
-      <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
+      <% if current_user %>
+        <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
+      <% end %>
     </div>
   <% end %>
 </ul>
@@ -52,3 +53,4 @@
 <%= paginate @reviews %>
 
 <p><%= link_to "Back", sites_path %></p>
+
