@@ -11,7 +11,9 @@ feature "User signs up" do
     fill_in "Username", with: "frankthetank"
     fill_in "Password", with: "password123"
     fill_in "Password confirmation", with: "password123"
-    click_on "Sign up"
+    within("#new_user") do
+      click_on "Sign up"
+    end
 
     expect(page).to have_content "Welcome! You have signed up successfully."
   end
@@ -19,7 +21,9 @@ feature "User signs up" do
   scenario "user signs up with invalid info" do
     visit new_user_registration_path
 
-    click_on "Sign up"
+    within("#new_user") do
+      click_on "Sign up"
+    end
 
     expect(page).to have_content "errors prohibited this user from being saved"
   end
