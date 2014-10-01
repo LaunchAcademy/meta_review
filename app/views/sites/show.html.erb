@@ -23,14 +23,16 @@
       <% if review.vote_from?(current_user) %>
         <%= change_review_vote_link_for(review, current_user) %>
       <% else %>
-        <%= button_to "Upvote" , review_votes_path(review),
-           method: :post,
-           params: {value: 1},
-           class: "button" %>
-        <%= button_to "Downvote" , review_votes_path(review),
-           params: {value: -1} ,
-           method: :post,
-           class: "button" %>
+        <% if current_user %>
+          <%= button_to "Upvote" , review_votes_path(review),
+             method: :post,
+             params: {value: 1},
+             class: "vote_button" %>
+          <%= button_to "Downvote" , review_votes_path(review),
+             params: {value: -1} ,
+             method: :post,
+             class: "vote_button" %>
+          <% end %>
       <% end %>
 
       <p><% if current_user == review.user %>
