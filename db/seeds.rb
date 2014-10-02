@@ -33,47 +33,56 @@ Site.create([
     title: "Yelp",
     url: "http://yelp.com",
     description: "This is a site that reviews restaurants.",
+    screenshot: "yelp.jpg"
     user_id: 1
   },
   {
     title: "Amazon",
     url: "http://amazon.com",
     description: "A site where you can buy pretty much anything: movies, books, music, tanks, etc. There are reviews of all those items. As well as reviews of sellers.",
+    screenshot: "amazon.jpg"
     user_id: 2
   },
   {
     title: "Rotten Tomatoes",
     url: "http://rottentomatoes.com",
     description: "Movie review site. Reviews movies and stuff",
+    screenshot: "rottentomatoes.jpg"
     user_id: 3
   },
   {
     title: "Caturday Funtime",
     url: "https://caturday-funtime.herokuapp.com/",
     description: "Reviews of cats. Nothing more important than that.",
+    screenshot: "caturday.jpg"
     user_id: 4
   },
   {
     title: "Trip Advisor",
     url: "http://www.tripadvisor.com/",
     description: "Reviews locations, beaches, bed and breakfasts, hotels, and stuff like that.",
+    screenshot: "tripadvisor.jpg"
     user_id: 1
   },
   {
     title: "metacritic",
     url: "http://www.metacritic.com/",
     description: "Entertainment reviews. Music, movies, tv, video games, you get the idea.",
-    user_id: 3  },
+    screenshot: "metacritic.jpg"
+    user_id: 3
+    },
   {
-    title: "Meta-Review",
-    url: "http://meta-review.herokuapp.com/",
-    description: "Also know as the best review site in modern history. Reviews other review sites. Superior to all other sites in every aspect.",
+    title: "South Park Reviews",
+    url: "http://southparkreviews.com/",
+    description: "The best South Park reviews site of all time",
+    screenshot: "southparkreviews.jpg"
     user_id: 2
   },
   {
     title: "goodreads",
     url: "https://www.goodreads.com/",
     description: "Book review site.",
+    screenshot: "goodreads.jpg",
     user_id: 1
   }])
 
