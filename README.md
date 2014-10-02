@@ -2,4 +2,18 @@
 
 # Meta Review
 
-Info coming soon.
+Meta Review is site devoted to reviewing other review sites.For when you need to know which review sites you can trust. Reviews are user generated, so you can see what real people think about other review site, not those snobby, professional review site reviewers. You can even vote for which reviews are best! So if you are having trouble on which review site to use to review stuff for your next big decision, come to Meta Review and we will help you out.
+
+The Meta Review Team
+
+Nicholas Sturgis - nsturgis
+Dennis Gokman - dgokman
+Alexander Cornford - RazzyP
+Peter Monroe - monroepe
+Eric Kelly - HeroicEric
+
+Find our app at: http://meta-review.herokuapp.com/
+
+Test Account
+email: test@test.com
+password: password123
