@@ -1,5 +1,5 @@
 class Site < ActiveRecord::Base
-  paginates_per 5
+  paginates_per 8
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :comments, through: :reviews
