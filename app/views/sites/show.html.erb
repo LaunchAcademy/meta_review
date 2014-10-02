@@ -34,7 +34,7 @@
        <% end %></div>
 
       <% if review.vote_from?(current_user) %>
-        <%= change_review_vote_link_for(review, current_user) %>
+        <%= change_review_vote_link_for(review, current_user) %><br>
       <% else %>
          <% if current_user %>
             <%= button_to "Upvote" , review_votes_path(review),
