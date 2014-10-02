@@ -15,9 +15,17 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
-$('.selector').infinitescroll({
-  behavior: 'local',
-  binder: $('body'), // scroll on this element rather than on the window
-  // other options
+
+$(function(){
+  $(document).foundation();
+
+  $('#show-comments')
+    .on('click', function(){
+      $(".comment-container").slideToggle()
+    });
+
+  $('#show-comments').click(function () {
+    this.innerHTML = this.innerHTML === "Show Comments" ? "Hide Comments" : "Show Comments";
 });
+});
+

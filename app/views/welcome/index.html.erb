@@ -5,4 +5,7 @@
 <% @sites.each do |site| %>
   <%= screenshot_for_site(site) %>
 <% end %>
-
+<br><br>
+<% if current_user %>
+  <%= link_to "Add a Site", new_site_path %>
+<% end %>
