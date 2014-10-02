@@ -23,7 +23,7 @@
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
       Likes: <%=review.votes.sum(:value)%>
-      <div id="edit_review"><% if current_user == review.user || user_has_permision_to_change?(review) %>
+      <div id="edit_review"><% if user_has_permision_to_change?(review) %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
