@@ -7,7 +7,7 @@ feature "Authenticated user can vote" do
 
     visit site_path(review.site)
     click_on "Like"
-    expect(page).to have_content "Like: 1"
+    expect(page).to have_content "Likes: 1"
   end
   scenario "User DisLike and decreases the votes by 1" do
     review = FactoryGirl.create(:review)
@@ -15,6 +15,6 @@ feature "Authenticated user can vote" do
 
     visit site_path(review.site)
     click_on "Dislike"
-    expect(page).to have_content "Like: -1"
+    expect(page).to have_content "Likes: -1"
   end
 end
