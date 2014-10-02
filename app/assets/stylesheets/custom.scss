@@ -1,5 +1,69 @@
-.comment-container{
-  margin-left: 3em;
+.comment-container {
+  margin-top: -6.0em;
+  margin-left: 1.5em;
+  list-style-type: none;
+}
+
+.comment-container li, .comment-container a {
+  font-size: 13px;
+}
+
+.comment-container h4 {
+  font-size: 16px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.votes_hidden {
+  display: none;
+}
+
+.vote_button {
+  float: left;
+  -moz-box-shadow:inset 0px 1px 0px 0px #d197fe;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #d197fe;
+  box-shadow:inset 0px 1px 0px 0px #d197fe;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a53df6), color-stop(1, #7c16cb) );
+  background:-moz-linear-gradient( center top, #a53df6 5%, #7c16cb 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a53df6', endColorstr='#7c16cb');
+  background-color:#a53df6;
+  -webkit-border-top-left-radius:0px;
+  -moz-border-radius-topleft:0px;
+  border-top-left-radius:0px;
+  -webkit-border-top-right-radius:0px;
+  -moz-border-radius-topright:0px;
+  border-top-right-radius:0px;
+  -webkit-border-bottom-right-radius:0px;
+  -moz-border-radius-bottomright:0px;
+  border-bottom-right-radius:0px;
+  -webkit-border-bottom-left-radius:0px;
+  -moz-border-radius-bottomleft:0px;
+  border-bottom-left-radius:0px;
+  text-indent:0;
+  display:inline-block;
+  color:#ffffff;
+  font-family:Verdana;
+  font-size:13px;
+  font-weight:bold;
+  font-style:normal;
+  height:31px;
+  line-height: 20px;
+  width:90px;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #7d15cd;
+}
+.vote_button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7c16cb), color-stop(1, #a53df6) );
+  background:-moz-linear-gradient( center top, #7c16cb 5%, #a53df6 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c16cb', endColorstr='#a53df6');
+  background-color:#7c16cb;
+}
+.vote_button:active {
+  position:relative;
+  top:1px;
 }
 body  {
     background-image: url('http://www.unsigneddesign.com/Summer%20Textures/summer10.jpg');

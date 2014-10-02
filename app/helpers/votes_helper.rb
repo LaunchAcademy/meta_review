@@ -6,7 +6,7 @@ module VotesHelper
       text = "Downvote"
       value = -1
     else
-      text = "Up"
+      text = "Upvote"
       value = 1
     end
 
@@ -15,6 +15,7 @@ module VotesHelper
       method:
         :put,
         params: { value: value },
-        class: "button"
+
+        class: "vote_button"
   end
 end

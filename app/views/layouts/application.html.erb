@@ -27,8 +27,13 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <% if user_signed_in? %>
-      <li class="has-dropdown" >
-        <%= image_tag current_user.avatar, height: 36, width: 24 %><%= current_user.username%>
+      <li class="has-dropdown">
+        <% if current_user.avatar.path %>
+          <%= image_tag current_user.avatar, height: 36, width: 24 %>
+        <% else %>
+          <img src="/meta_default.jpg" height=36 width=24 />
+        <% end %>
+        <strong><%= current_user.username %></strong>
         <ul class="dropdown">
           <li><%= link_to "Sign out", destroy_user_session_path, data: {method: 'delete'} %></li>
           <li><%= link_to "Edit Account Information",edit_user_registration_path %></li>
