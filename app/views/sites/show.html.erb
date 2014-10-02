@@ -27,34 +27,34 @@
       Description: <%= review.body %><br>
       Likes: <%=review.votes.sum(:value)%>
 
-      <p><% if current_user == review.user %>
+      <div id="edit_review"><% if current_user == review.user %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
-       <% end %></p>
+       <% end %></div>
 
       <% if review.vote_from?(current_user) %>
         <%= change_review_vote_link_for(review, current_user) %>
       <% else %>
-        <% if current_user %>
-          <%= button_to "Upvote" , review_votes_path(review),
-             method: :post,
-             params: {value: 1},
-             class: "vote_button" %>
-          <%= button_to "Downvote" , review_votes_path(review),
-             params: {value: -1} ,
-             method: :post,
-             class: "vote_button" %>
-          <% end %>
-      <% end %>
+         <% if current_user %>
+            <%= button_to "Upvote" , review_votes_path(review),
+               method: :post,
+               params: {value: 1},
+               class: "vote_button" %>
+            <%= button_to "Downvote" , review_votes_path(review),
+               params: {value: -1} ,
+               method: :post,
+               class: "vote_button" %><br>
+         <% end %>
+       <% end %>
       <br><br>
     </li>
-
+    <br>
     <div class="comment-container">
-      <% unless review.comments == [] %>
-        <br><h4>Comments</h4>
-      <% end %>
-
+    <br>
+    <% unless review.comments == [] %>
+      <hr>
+    <% end %>
       <% review.comments.each do |comment| %>
         <li>
         <% if comment.user.avatar.path %>
@@ -69,10 +69,11 @@
           { confirm: "Are your sure?" } %></li>
         <% end %>
       <% end %>
-
-      <br>
-      <% if current_user %>
+      <% if current_user %><br>
         <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
+      <% end %>
+      <% unless review.comments == [] %>
+        <hr>
       <% end %>
     </div>
   <% end %>
