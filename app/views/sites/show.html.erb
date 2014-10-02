@@ -47,11 +47,14 @@
                class: "vote_button" %><br>
          <% end %>
        <% end %>
-      <br><br>
+      <br>
     </li>
-    <br>
+
+    <% unless review.comments == [] %>
     <button type="button" id="show-comments">Show Comments<br></button>
-    <br><br><br>
+    <% end %>
+
+    <br>
     <div class="comment-container">
     <br>
     <% unless review.comments == [] %>
@@ -71,13 +74,13 @@
           { confirm: "Are your sure?" } %></li>
         <% end %>
       <% end %>
-      <% if current_user %><br>
-        <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
-      <% end %>
       <% unless review.comments == [] %>
         <hr>
       <% end %>
     </div>
+    <% if current_user %>
+        <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
+      <% end %>
   <% end %>
 </ul>
 
