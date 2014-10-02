@@ -15,4 +15,11 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $(document).foundation();
+  $('#show-comments')
+    .on("click", function(){
+      $('.comment-container').toggle();
+    });
+});
+
