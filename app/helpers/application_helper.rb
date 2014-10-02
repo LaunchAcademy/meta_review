@@ -1,8 +1,8 @@
 module ApplicationHelper
   def screenshot_for_site(site)
-    unless stw_show_url(site.url) =~ /</
+    unless site.screenshot =~ /shrinktheweb/
       link_to site_path(site), id: "screenshot-link" do
-        stw_show(site.url)
+        image_tag(site.screenshot)
       end
     end
   end
