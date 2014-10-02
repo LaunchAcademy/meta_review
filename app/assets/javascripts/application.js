@@ -17,9 +17,14 @@
 
 $(function(){
   $(document).foundation();
+
   $('#show-comments')
-    .on("click", function(){
-      $('.comment-container').toggle();
+    .on('click', function(){
+      $(".comment-container").slideToggle()
     });
+
+  $('#show-comments').click(function () {
+    this.innerHTML = this.innerHTML === "Show Comments" ? "Hide Comments" : "Show Comments";
+});
 });
 
