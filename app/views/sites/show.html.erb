@@ -12,7 +12,7 @@
 
 <h2>Reviews</h2>
 <ul>
-  <% @reviews.each do |review| %>
+  <% @site.reviews.each do |review| %>
     <li> User:
       <% if review.user.avatar.path %>
         <%= image_tag review.user.avatar, height: 36, width: 24 %>
