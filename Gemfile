@@ -18,7 +18,9 @@ gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'kaminari'
 gem 'nokogiri'
-gem 'stw_engine', git: 'https://github.com/monroepe/stw-engin'
+gem 'stw_engine',
+  github: 'monroepe/stw-engin',
+  branch: 'rails_4_compatability'
 
 group :development, :test do
   gem 'capybara'

@@ -1,6 +1,7 @@
 GIT
-  remote: https://github.com/monroepe/stw-engin
-  revision: b537d0d36fc8147a677316756f1e9579182524ed
+  remote: git://github.com/monroepe/stw-engin.git
+  revision: de21a55f839b5021b754a76010755f2fe32dc088
+  branch: rails_4_compatability
   specs:
     stw_engine (0.0.3)
 
