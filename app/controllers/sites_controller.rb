@@ -9,7 +9,7 @@ class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
     @reviews = @site.reviews.order(:body).page(params[:page])
-    @site.update(screenshot: StwEngine::Helpers::Common.stw_show_url(@site.url))
+
     if current_user
       @user_review = @site.reviews.find_by(user: current_user)
     end
@@ -17,13 +17,12 @@ class SitesController < ApplicationController
 
   def new
     @site = Site.new
-    @screenshot = StwEngine::Helpers::Common.stw_show_url(@site.url)
   end
 
   def create
     @site = current_user.sites.build(site_params)
-
     if @site.save
+      @site.update(screenshot: StwEngine::Helpers::Common.stw_show_url(@site.url))
       redirect_to @site, notice: 'Site created successfully!'
     else
       render "new"
