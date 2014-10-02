@@ -70,7 +70,7 @@ Site.create([
     description: "Entertainment reviews. Music, movies, tv, video games, you get the idea.",
     screenshot: "metacritic.jpg",
     user_id: 3
-    },
+  },
   {
     title: "South Park Reviews",
     url: "http://southparkreviews.com/",
