@@ -1,9 +1,12 @@
 <h1>Review Sites</h1>
-<% @sites.each do |site| %>
-<div class="panel">
-<h5><%= link_to site.title, site_path(site) %></h5>
+
+<div class="row" data-equalizer>
+  <% @sites.each do |site| %>
+  <div class="large-6 columns panel" data-equalizer-watch>
+    <h5><%= link_to site.title, site_path(site) %></h5>
+  </div>
+  <% end %>
 </div>
-<% end %>
 
 <% unless params[:search] %>
   <%= paginate @sites %>
