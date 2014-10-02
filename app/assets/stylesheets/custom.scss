@@ -2,8 +2,13 @@
   margin-left: 3em;
 }
 body  {
-    background-image: url('http://www.unsigneddesign.com/Summer%20Textures/summer10.jpg');
+  background: url('http://www.unsigneddesign.com/Summer%20Textures/summer10.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
+
  h1 {
  font-family: "Arial Black", Gadget, sans-serif
  }
