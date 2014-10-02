@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/monroepe/stw-engin
+  revision: b537d0d36fc8147a677316756f1e9579182524ed
+  specs:
+    stw_engine (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -249,7 +255,6 @@ GEM
     sqlite3 (1.3.9)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
-    stw_engine (0.0.3)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
     thin (1.5.1)
@@ -306,6 +311,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   simple_form
   spring
-  stw_engine
+  stw_engine!
   uglifier (>= 1.3.0)
   unicorn
