@@ -8,7 +8,9 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
-    @reviews = @site.reviews.order(:body).page params[:page]
+    @reviews = @site.reviews.order(:body).page(params[:page])
+    @site.screenshot = StwEngine::Helpers::Common.stw_show_url(@site.url)
+    binding.pry
     if current_user
       @user_review = @site.reviews.find_by(user: current_user)
     end
