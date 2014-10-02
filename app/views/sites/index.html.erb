@@ -5,8 +5,10 @@
 </div>
 <% end %>
 
-<%= link_to "Create a Site", new_site_path %>
 <% unless params[:search] %>
-<%= paginate @sites %>
+  <%= paginate @sites %>
 <% end %>
 
+<% if current_user %>
+  <%= link_to "Add a Site", new_site_path %>
+<% end %>
