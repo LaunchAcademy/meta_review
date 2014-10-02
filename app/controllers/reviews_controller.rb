@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @site = Site.find(params[:site_id])
-    @review = current_user.reviews.find(params[:id])
+    @review = review_assigner
   end
 
   def update
@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @site = Site.find(params[:site_id])
-    @review = current_user.reviews.find(params[:id])
+    @review = review_assigner
 
     @review.destroy
 
@@ -46,5 +46,10 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :body)
+  end
+
+  def review_assigner
+    current_user.admin ? Review.find(params[:id]) :
+    current_user.reviews.find(params[:id]) ##redundency for safty
   end
 end

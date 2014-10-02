@@ -3,10 +3,10 @@ module VotesHelper
     vote = review.vote_from(user)
 
     if vote.value == 1
-      text = "Downvote"
+      text = "Dislike"
       value = -1
     else
-      text = "Upvote"
+      text = "Like"
       value = 1
     end
 

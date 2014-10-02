@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Delete comment" do
-  scenario "user delets site succesfully" do
+  scenario "user deletes site succesfully" do
     comment = FactoryGirl.create(:comment)
     site = comment.review.site
     sign_in_as(comment.user)
