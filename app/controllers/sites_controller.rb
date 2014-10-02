@@ -9,8 +9,7 @@ class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
     @reviews = @site.reviews.order(:body).page(params[:page])
-    @site.screenshot = StwEngine::Helpers::Common.stw_show_url(@site.url)
-    binding.pry
+    @site.update(screenshot: StwEngine::Helpers::Common.stw_show_url(@site.url))
     if current_user
       @user_review = @site.reviews.find_by(user: current_user)
     end
@@ -18,6 +17,7 @@ class SitesController < ApplicationController
 
   def new
     @site = Site.new
+    @screenshot = StwEngine::Helpers::Common.stw_show_url(@site.url)
   end
 
   def create
@@ -55,7 +55,7 @@ class SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:title, :url, :description, :screenshot)
+    params.require(:site).permit(:title, :url, :description)
   end
 
 end
