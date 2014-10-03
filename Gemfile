@@ -23,6 +23,7 @@ gem 'nokogiri'
 gem 'stw_engine',
   github: 'monroepe/stw-engin',
   branch: 'rails_4_compatability'
+gem 'mandrill-api'
 
 group :development, :test do
   gem 'capybara'
