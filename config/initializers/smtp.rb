@@ -4,7 +4,7 @@ if Rails.env.development?
     address: "localhost",
     port: 1025
   }
-end
+else
 
 ActionMailer::Base.smtp_settings = {
     :port =>           '587',
@@ -15,3 +15,5 @@ ActionMailer::Base.smtp_settings = {
     :authentication => :plain
 }
 ActionMailer::Base.delivery_method = :smtp
+
+end
