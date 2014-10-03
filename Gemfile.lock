@@ -1,9 +1,10 @@
 GIT
   remote: git://github.com/monroepe/stw-engin.git
-  revision: 0424d0038d9a3bba89a12c1221ec751cbb6f3c98
+  revision: ab411fa7e58546a58063532c7b13a7db34e90920
   branch: rails_4_compatability
   specs:
-    stw_engine (0.0.3)
+    stw_engine (0.0.4)
+      nokogiri
 
 GEM
   remote: https://rubygems.org/
