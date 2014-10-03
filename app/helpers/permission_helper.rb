@@ -1,9 +1,5 @@
 module PermissionHelper
-  def user_has_permision_to_change?(view)
-    if !current_user.nil? && current_user == view.user || !current_user.nil? && current_user.admin?
-      true
-    else
-      false
-    end
+  def user_has_permision_to_change?(model)
+    current_user && (current_user == model.user || current_user.admin?)
   end
 end
