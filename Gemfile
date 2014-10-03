@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'spring',        group: :development
 gem 'foundation-rails', '5.4.3.1'
 gem 'devise'
+gem 'quiet_assets'
+gem 'rack-mini-profiler'
 gem 'fog'
 gem 'browserstack-screenshot'
 gem 'cloudinary', '~> 1.0.77'
@@ -21,7 +23,6 @@ gem 'nokogiri'
 gem 'stw_engine'
 
 group :development, :test do
-  gem 'fog'
   gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
@@ -31,6 +32,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'mailcatcher'
   gem 'email_spec'
+  gem 'bullet'
 end
 
 group :test do

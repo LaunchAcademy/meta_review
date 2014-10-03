@@ -35,12 +35,13 @@
         <% end %>
         <strong><%= current_user.username %></strong>
         <ul class="dropdown">
-          <li><a href="#"><%= link_to "Sign out", destroy_user_session_path, data: {method: 'delete'} %></a></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, data: {method: 'delete'} %></li>
           <li><%= link_to "Edit Account Information",edit_user_registration_path %></li>
       <% else %>
         <li class="has-dropdown">
-        <%= link_to "Sign in", new_user_session_path %>
+        <a href="#">User</a>
         <ul class="dropdown">
+        <li><%= link_to "Sign in", new_user_session_path %></li>
         <li><%= link_to "Create Account", new_user_registration_path %>
         </li>
         <% end %>
@@ -50,15 +51,15 @@
     </ul>
     <!-- Left Nav Section -->
     <ul class="left">
-      <li><%= link_to "All Sites", sites_path %></a></li>
+      <li><%= link_to "All Sites", sites_path %></li>
       <li class="has-form">
         <div class="row collapse">
           <%= form_tag sites_path, :method => 'get' do %>
-            <div class="large-7 small-8 columns">
+            <div class="large-8 small-8 columns">
               <%= text_field_tag :search, params[:search]%>
             </div>
             <div class="large-4 small-3 columns">
-              <%= submit_tag "Search", :name => nil %>
+              <%= submit_tag "Search", :name => nil,  class: "search-button"%>
             </div>
           <% end %>
         </div>

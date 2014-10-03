@@ -69,6 +69,24 @@ ul {
   position:relative;
   top:1px;
 }
+body  {
+  background: url('http://www.unsigneddesign.com/Summer%20Textures/summer10.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+ h1 {
+ font-family: "Arial Black", Gadget, sans-serif
+ }
+
+.top-bar-section {
+  color: white;
+}
+ ul.right {
+  margin-right:1em;
+  }
 
 .panel {
   text-align: center;
@@ -115,4 +133,52 @@ ul {
 
 .comment-list--open {
   display: block;
+}
+
+.search-button {
+  -moz-box-shadow:inset 0px 1px 0px -1px #fce2c1;
+  -webkit-box-shadow:inset 0px 1px 0px -1px #fce2c1;
+  box-shadow:inset 0px 1px 0px -1px #fce2c1;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+  background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+  background-color:#ffc477;
+  -webkit-border-top-left-radius:20px;
+  -moz-border-radius-topleft:20px;
+  border-top-left-radius:20px;
+  -webkit-border-top-right-radius:20px;
+  -moz-border-radius-topright:20px;
+  border-top-right-radius:20px;
+  -webkit-border-bottom-right-radius:20px;
+  -moz-border-radius-bottomright:20px;
+  border-bottom-right-radius:20px;
+  -webkit-border-bottom-left-radius:20px;
+  -moz-border-radius-bottomleft:20px;
+  border-bottom-left-radius:20px;
+  text-indent:0;
+  border:1px solid #eeb44f;
+  display:inline-block;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:50px;
+  font-weight:bold;
+  font-style:normal;
+  height:22px;
+  line-height:15px;
+  width:110px;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 0px 0px #cc9f52;
+}
+
+.search-button:hover{
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
+  background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+  background-color:#fb9e25;
+}
+
+.search-button:active {
+  position:relative;
+  top:1px;
 }
