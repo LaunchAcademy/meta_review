@@ -5,4 +5,5 @@ module PermissionHelper
     else
       false
     end
+  end
 end
