@@ -8,7 +8,8 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
-    @reviews = @site.reviews.includes(:user, comments: :user).order(:body).page(params[:page])
+
+    @reviews = @site.reviews.includes(:user, comments: :user).order(:body).page params[:page]
 
     if current_user
       @user_review = @site.reviews.find_by(user: current_user)

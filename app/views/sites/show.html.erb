@@ -23,6 +23,7 @@
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
       Likes: <%=review.votes.sum(:value)%>
+
       <div id="edit_review"><% if user_has_permision_to_change?(review) %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
@@ -46,16 +47,14 @@
       <br>
     </li>
 
+    <br>
+    <div class="comments-container">
     <% unless review.comments == [] %>
-    <button type="button" id="show-comments">Hide Comments<br></button>
+      <a href="#" class="comments-toggler" data-toggle-target="">Show/Hide Comments</a>
     <% end %>
 
-    <br>
-    <div class="comment-container">
-    <br>
-    <% unless review.comments == [] %>
+    <ul class="comment-list">
       <hr>
-    <% end %>
       <% review.comments.each do |comment| %>
 
         <li>
@@ -68,13 +67,14 @@
         <% if user_has_permision_to_change?(comment) %>
           <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
           <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
-          { confirm: "Are your sure?" } %></li>
+          { confirm: "Are your sure?" } %>
+          </li>
         <% end %>
       <% end %>
-      <% unless review.comments == [] %>
         <hr>
-      <% end %>
+      </ul>
     </div>
+
     <% if current_user %>
         <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
       <% end %>
