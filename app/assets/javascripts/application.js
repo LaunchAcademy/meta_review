@@ -16,8 +16,4 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-$('.selector').infinitescroll({
-  behavior: 'local',
-  binder: $('body'), // scroll on this element rather than on the window
-  // other options
-});
+
