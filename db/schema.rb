@@ -75,4 +75,12 @@ ActiveRecord::Schema.define(version: 20141001141637) do
     t.datetime "updated_at"
   end
 
+  create_table "votes", force: true do |t|
+    t.integer  "user_id",                null: false
+    t.integer  "review_id",              null: false
+    t.integer  "value",      default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
