@@ -8,6 +8,7 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
+
     @reviews = @site.reviews.includes(:user, comments: :user).order(:body).page params[:page]
 
     if current_user
@@ -45,6 +46,7 @@ class SitesController < ApplicationController
 
   def destroy
     @site = find_authorized_site
+
     @site.destroy
 
     redirect_to sites_path, notice: 'Site destroyed successfully!'

@@ -1,3 +1,4 @@
+require 'mandrill'
 class ReviewComment < ActionMailer::Base
   default from: "admin@meta-review.herokuapp.com"
 
