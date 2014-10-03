@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @site = Site.find(params[:site_id])
-    @review = current_user.reviews.find(params[:id])
+    @review = find_authorized_review
   end
 
   def update
@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @site = Site.find(params[:site_id])
-    @review = current_user.reviews.find(params[:id])
+    @review = find_authorized_review
 
     @review.destroy
 
@@ -46,5 +46,13 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :body)
+  end
+
+  def find_authorized_review
+    if current_user.admin?
+      Review.find(params[:id])
+    else
+       current_user.reviews.find(params[:id])
+    end
   end
 end

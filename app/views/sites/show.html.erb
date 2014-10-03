@@ -1,8 +1,7 @@
 <h1><%= @site.title %></h1>
   <h3><%= link_to @site.url, @site.formatted_url %></h3>
 <p><%= @site.description %></p>
-
-<% if current_user == @site.user %>
+<% if user_has_permision_to_change?(@site) %>
   <%= link_to "Edit", edit_site_path %>
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
@@ -26,8 +25,7 @@
       Rating: <%= review.rating %> <br>
       Description: <%= review.body %><br>
       Likes: <%=review.votes.sum(:value)%>
-
-      <div id="edit_review"><% if current_user == review.user %>
+      <div id="edit_review"><% if user_has_permision_to_change?(review) %>
         <%= link_to "Edit Review", edit_site_review_path(@site, review)%> |
         <%= link_to "Delete Review", site_review_path(@site, review) , method: :delete, data:
         { confirm: "Are your sure?" } %>
@@ -37,11 +35,11 @@
         <%= change_review_vote_link_for(review, current_user) %><br>
       <% else %>
          <% if current_user %>
-            <%= button_to "Upvote" , review_votes_path(review),
+            <%= button_to "Like" , review_votes_path(review),
                method: :post,
                params: {value: 1},
                class: "vote_button" %>
-            <%= button_to "Downvote" , review_votes_path(review),
+            <%= button_to "Dislike" , review_votes_path(review),
                params: {value: -1} ,
                method: :post,
                class: "vote_button" %><br>
@@ -63,7 +61,7 @@
           <img src="/meta_default.jpg" height=36 width=24 />
         <% end %>
         <%= comment.body %> --<%= comment.user.username %>
-        <% if comment.user == current_user %>
+        <% if user_has_permision_to_change?(comment) %>
           <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
           <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
           { confirm: "Are your sure?" } %>
@@ -89,4 +87,3 @@
 </p>
 
 <p><%= link_to "Back", sites_path %></p>
-
