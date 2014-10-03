@@ -8,7 +8,8 @@ feature "Admin deletes comment" do
     sign_in_as(admin_user)
 
     visit site_path(comment.review.site)
-    within('.comment-container') do
+
+    within('.comment-list') do
       click_on "Delete"
     end
 
