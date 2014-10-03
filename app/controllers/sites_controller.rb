@@ -30,11 +30,11 @@ class SitesController < ApplicationController
   end
 
   def edit
-    @site = current_user.sites.find(params[:id])
+    @site = find_authorized_site
   end
 
   def update
-    @site = current_user.sites.find(params[:id])
+    @site = find_authorized_site
 
     if @site.update(site_params)
       redirect_to @site, notice: 'Site updated successfully!'
@@ -44,8 +44,7 @@ class SitesController < ApplicationController
   end
 
   def destroy
-    @site = current_user.sites.find(params[:id])
-
+    @site = find_authorized_site
     @site.destroy
 
     redirect_to sites_path, notice: 'Site destroyed successfully!'
@@ -57,4 +56,11 @@ class SitesController < ApplicationController
     params.require(:site).permit(:title, :url, :description)
   end
 
+  def find_authorized_site
+    if current_user.admin?
+      Site.find(params[:id])
+    else
+      current_user.sites.find(params[:id])
+    end
+  end
 end

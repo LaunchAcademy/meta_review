@@ -21,13 +21,13 @@ class CommentsController < ApplicationController
 
   def edit
     @review = Review.find(params[:review_id])
-    @comment = current_user.comments.find(params[:id])
+    @comment = find_authorized_comment
   end
 
   def update
     @review = Review.find(params[:review_id])
     @site = @review.site
-    @comment = current_user.comments.find(params[:id])
+    @comment = find_authorized_comment
 
     if @comment.update(comment_params)
       redirect_to @site, notice: "Comment updated successfully!"
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
   def destroy
     @review = Review.find(params[:review_id])
     @site = @review.site
-    @comment = current_user.comments.find(params[:id])
+    @comment = find_authorized_comment
 
     @comment.destroy
 
@@ -50,5 +50,13 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def find_authorized_comment
+    if current_user.admin?
+      Comment.find(params[:id])
+    else
+      current_user.comments.find(params[:id]) ##redundency for safty
+    end
   end
 end
