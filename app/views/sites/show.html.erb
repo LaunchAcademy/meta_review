@@ -2,7 +2,7 @@
   <h3><%= link_to @site.url, @site.formatted_url %></h3>
 <p><%= @site.description %></p>
 <% if user_has_permision_to_change?(@site) %>
-  <%= link_to "Edit", edit_site_path %>
+  <%= link_to "Edit", edit_site_path %> |
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
 <br />
@@ -13,9 +13,7 @@
 <h2>Reviews</h2>
 <ul>
   <% @reviews.each do |review| %>
-    <li>
-
-      User:
+    <li> User:
       <% if review.user.avatar.path %>
         <%= image_tag review.user.avatar, height: 36, width: 24 %>
       <% else %>
@@ -45,8 +43,13 @@
                class: "vote_button" %><br>
          <% end %>
        <% end %>
-      <br><br>
+      <br>
     </li>
+
+    <% unless review.comments == [] %>
+    <button type="button" id="show-comments">Hide Comments<br></button>
+    <% end %>
+
     <br>
     <div class="comment-container">
     <br>
@@ -54,6 +57,7 @@
       <hr>
     <% end %>
       <% review.comments.each do |comment| %>
+
         <li>
         <% if comment.user.avatar.path %>
           <%= image_tag comment.user.avatar, height: 30, width: 20 %>
@@ -67,13 +71,13 @@
           { confirm: "Are your sure?" } %></li>
         <% end %>
       <% end %>
-      <% if current_user %><br>
-        <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
-      <% end %>
       <% unless review.comments == [] %>
         <hr>
       <% end %>
     </div>
+    <% if current_user %>
+        <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
+      <% end %>
   <% end %>
 </ul>
 
