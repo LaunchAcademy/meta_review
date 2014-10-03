@@ -18,10 +18,12 @@ gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'kaminari'
 gem 'nokogiri'
-gem 'stw_engine'
+gem 'stw_engine',
+  github: 'monroepe/stw-engin',
+  branch: 'rails_4_compatability'
+gem 'mandrill-api'
 
 group :development, :test do
-  gem 'fog'
   gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
