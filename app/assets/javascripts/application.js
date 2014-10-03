@@ -15,4 +15,12 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $(document).foundation();
+
+    $('.comments-container').on('click', '.comments-toggler', function(event) {
+      event.preventDefault();
+    $(this).siblings('.comment-list').toggleClass('comment-list--open');
+  });
+});
+
