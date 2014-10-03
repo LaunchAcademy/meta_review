@@ -74,7 +74,7 @@ ul {
   text-align: center;
 }
 
-#show-comments {
+.show-comments {
   -moz-box-shadow:inset 0px 1px 0px 0px #d197fe;
   -webkit-box-shadow:inset 0px 1px 0px 0px #d197fe;
   box-shadow:inset 0px 1px 0px 0px #d197fe;
@@ -107,4 +107,12 @@ ul {
   text-decoration:none;
   text-align:center;
   text-shadow:1px 1px 0px #7d15cd;
+}
+
+.comment-list {
+  display: none;
+}
+
+.comment-list--open {
+  display: block;
 }

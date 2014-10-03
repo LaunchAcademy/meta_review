@@ -50,16 +50,11 @@
       <br>
     </li>
 
-    <% unless review.comments == [] %>
-    <button type="button" id="show-comments">Hide Comments<br></button>
-    <% end %>
-
     <br>
-    <div class="comment-container">
-    <br>
-    <% unless review.comments == [] %>
+    <div class="comments-container">
+    <a href="#" class="comments-toggler" data-toggle-target="">Show Comments</a>
       <hr>
-    <% end %>
+    <ul class="comment-list">
       <% review.comments.each do |comment| %>
         <li>
         <% if comment.user.avatar.path %>
@@ -71,9 +66,12 @@
         <% if comment.user == current_user %>
           <%= link_to "Edit", edit_review_comment_path(review, comment)%> |
           <%= link_to "Delete", review_comment_path(review, comment) , method: :delete, data:
-          { confirm: "Are your sure?" } %></li>
+          { confirm: "Are your sure?" } %>
+          </li>
         <% end %>
       <% end %>
+
+      </ul>
       <% unless review.comments == [] %>
         <hr>
       <% end %>
