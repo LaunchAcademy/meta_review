@@ -2,7 +2,7 @@
   <h3><%= link_to @site.url, @site.formatted_url %></h3>
 <p><%= @site.description %></p>
 <% if user_has_permision_to_change?(@site) %>
-  <%= link_to "Edit", edit_site_path %>
+  <%= link_to "Edit", edit_site_path %> |
   <%= link_to "Delete", @site, method: :delete, data: {   confirm: "Are you sure?" } %><br>
 <% end %>
 <br />
@@ -50,9 +50,12 @@
 
     <br>
     <div class="comments-container">
-    <a href="#" class="comments-toggler" data-toggle-target="">Show Comments</a>
-      <hr>
+    <% unless review.comments == [] %>
+      <a href="#" class="comments-toggler" data-toggle-target="">Show/Hide Comments</a>
+    <% end %>
+
     <ul class="comment-list">
+      <hr>
       <% review.comments.each do |comment| %>
         <li>
         <% if comment.user.avatar.path %>
@@ -68,12 +71,10 @@
           </li>
         <% end %>
       <% end %>
-
-      </ul>
-      <% unless review.comments == [] %>
         <hr>
-      <% end %>
+      </ul>
     </div>
+
     <% if current_user %>
         <p><%= link_to "New Comment", new_review_comment_path(review) %></p>
       <% end %>
